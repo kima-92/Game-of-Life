@@ -39,29 +39,21 @@ class Grid: UIView {
                 for x in stride(from: 0, through: rect.maxX, by: cellSize) {
                     // vertical
                     for y in stride(from: 0, through: rect.maxY, by: cellSize) {
-                        //print("\nsum: \(sum), x: \(x), y: \(y), rect.maxX: \(rect.maxX), rect.maxY: \(rect.maxY),by: \(cellSize)")
                         
                         // Doing work for each cell
                         createNewCell(x: x, y: y)
                         
-                        // Using color to see the size of the cells
-                        let randomNum = Int.random(in: 1..<9)
-                        var color: UIColor
-                        // Giving each cell a different color ( for now )
-                        if randomNum <= 3 {
-                            color = .red
-                        } else if randomNum == 4 || randomNum == 5 {
-                            color = .purple
-                        } else {
-                            color = .cyan
-                        }
-                        
+                        let lightGreyColor: UIColor = .lightGray
+
                         // Creating a cell at a specific spot
                         let pixelRect = CGRect(x: x, y: y, width: cellSize, height: cellSize)
                         
                         // TODO: - Before production, this should color all the cells white, with a black border
-                        context.setFillColor(color.cgColor)
+                        context.setFillColor(lightGreyColor.cgColor)
                         context.fill(pixelRect)
+                        
+//                        context.setStrokeColor(blackColor.cgColor)
+//                        context.setLineWidth(<#T##width: CGFloat##CGFloat#>)
                     }
                 }
             }
@@ -98,18 +90,7 @@ class Grid: UIView {
                         context.setFillColor(color.cgColor)
                         context.fill(pixelRect)
                         
-                        //                    var myLabel = UILabel(frame: pixelRect)
-                        //                    myLabel.text = "\(sum)"
-                        //                    myLabel.textAlignment = .center
-                        //                    myLabel.textColor = .black
-                        //                    myLabel.font = myLabel.font.withSize(5)
-                        //
-                        //                    self.addSubview(myLabel)
-                        //
-                        //                    sum += 1
                     }
-                    
-                    
                 }
             }
         }
