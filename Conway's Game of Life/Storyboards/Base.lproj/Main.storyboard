@@ -7,14 +7,34 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Grid View Controller-->
         <scene sceneID="fWA-aY-Gtp">
             <objects>
-                <viewController id="BaM-5D-goS" sceneMemberID="viewController">
+                <viewController id="BaM-5D-goS" customClass="GridViewController" customModule="Conway_s_Game_of_Life" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s0Q-Nx-iV8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWR-Ut-77d">
+                                <rect key="frame" x="87" y="228" width="240" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENq-KB-JZq">
+                                <rect key="frame" x="40" y="519" width="334" height="30"/>
+                                <state key="normal" title="grid"/>
+                                <connections>
+                                    <action selector="gridButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="U6x-X0-XTH"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="FWR-Ut-77d" firstAttribute="top" secondItem="1z7-QE-TCN" secondAttribute="top" constant="50" id="0oH-35-RBB"/>
+                            <constraint firstItem="ENq-KB-JZq" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="40" id="DSV-XJ-YpO"/>
+                            <constraint firstItem="FWR-Ut-77d" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="20" id="HhV-xe-mgJ"/>
+                            <constraint firstItem="1z7-QE-TCN" firstAttribute="trailing" secondItem="ENq-KB-JZq" secondAttribute="trailing" constant="40" id="mVB-S7-sTu"/>
+                            <constraint firstItem="ENq-KB-JZq" firstAttribute="top" secondItem="FWR-Ut-77d" secondAttribute="bottom" constant="100" id="qLe-JN-TkI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1z7-QE-TCN"/>
                     </view>
                 </viewController>

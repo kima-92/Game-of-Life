@@ -12,6 +12,7 @@
 		FABCE636247C8234007F230D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABCE634247C8234007F230D /* Main.storyboard */; };
 		FABCE638247C8236007F230D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FABCE637247C8236007F230D /* Assets.xcassets */; };
 		FABCE63B247C8236007F230D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABCE639247C8236007F230D /* LaunchScreen.storyboard */; };
+		FABCE648247C88CC007F230D /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCE647247C88CC007F230D /* GridViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		FABCE637247C8236007F230D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FABCE63A247C8236007F230D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FABCE63C247C8236007F230D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FABCE647247C88CC007F230D /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +41,7 @@
 			isa = PBXGroup;
 			children = (
 				FABCE646247C827B007F230D /* Storyboards */,
+				FABCE64B247C8992007F230D /* SwiftUI VIews */,
 				FABCE645247C8272007F230D /* View Controllers */,
 				FABCE644247C826D007F230D /* Views */,
 				FABCE643247C8266007F230D /* Models */,
@@ -91,6 +94,7 @@
 		FABCE645247C8272007F230D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FABCE647247C88CC007F230D /* GridViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -102,6 +106,13 @@
 				FABCE639247C8236007F230D /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FABCE64B247C8992007F230D /* SwiftUI VIews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "SwiftUI VIews";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +188,7 @@
 			files = (
 				FABCE62F247C8234007F230D /* AppDelegate.swift in Sources */,
 				FABCE631247C8234007F230D /* SceneDelegate.swift in Sources */,
+				FABCE648247C88CC007F230D /* GridViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
