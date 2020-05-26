@@ -42,6 +42,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1z7-QE-TCN"/>
                     </view>
+                    <connections>
+                        <outlet property="grid" destination="FWR-Ut-77d" id="y6r-IZ-kiA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4jN-hL-7O8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -14,6 +14,9 @@ class GridViewController: UIViewController {
     // MARK: - Properties
     var timer = Timer()
     
+    // MARK: - Outlets
+    @IBOutlet weak var grid: Grid!
+    
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +30,12 @@ class GridViewController: UIViewController {
     }
     
     private func setUpTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(refreshGrid), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(refreshGrid), userInfo: nil, repeats: true)
     }
     
     @objc private func refreshGrid() {
         print("Timer fired!")
+        grid.setNeedsDisplay()
     }
     
 
