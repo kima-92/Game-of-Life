@@ -7,13 +7,25 @@
 //
 
 import UIKit
+import Foundation
 
 class GridViewController: UIViewController {
+    
+    // MARK: - Properties
+    var timer = Timer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        setUpTimer()
+    }
+    
+    private func setUpTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(refreshGrid), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func refreshGrid() {
+        print("Timer fired!")
     }
     
 
