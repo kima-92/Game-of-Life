@@ -7,9 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 struct Cell {
-    var id: UUID
+    //var id: UUID
+    
+    var coordinates: Coordinates
     var state: CellState
-    var neighborhood: Neighborhood
+    
+    var neighborhood: Neighborhood?
 }
