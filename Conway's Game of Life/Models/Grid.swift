@@ -10,6 +10,10 @@ import UIKit
 
 class Grid: UIView {
     
+    var cellController: CellController?
+    
+    //var sum = 1
+    
     // Setup for the Grid before the screen loads
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -20,43 +24,98 @@ class Grid: UIView {
     // MARK: - Drawing the Grid
     override func draw(_ rect: CGRect) {
         
+        guard let cellController = cellController else { return }
+        
         // Set the size of each cell in the grid
         let cellSize: CGFloat = 8
         
         
-        if let context = UIGraphicsGetCurrentContext() {
+        // If we have no cells yet
+        if cellController.cells.isEmpty {
             
-            // Doing work for each cell
-            for x in stride(from: 0, through: rect.maxX, by: cellSize) {
-                for y in stride(from: 0, through: rect.maxY, by: cellSize) {
-                    
-                    let randomNum = Int.random(in: 1..<9)
-                    
-                    var color: UIColor
-                    
-                    // Giving each cell a different color ( for now )
-                    if randomNum <= 3 {
-                        color = .red
-                    } else if randomNum == 4 || randomNum == 5 {
-                        color = .purple
-                    } else {
-                        color = .cyan
+            if let context = UIGraphicsGetCurrentContext() {
+                
+                // horizontal
+                for x in stride(from: 0, through: rect.maxX, by: cellSize) {
+                    // vertical
+                    for y in stride(from: 0, through: rect.maxY, by: cellSize) {
+                        //print("\nsum: \(sum), x: \(x), y: \(y), rect.maxX: \(rect.maxX), rect.maxY: \(rect.maxY),by: \(cellSize)")
+                        
+                        // Doing work for each cell
+                        createNewCell(x: x, y: y)
+                        
+                        // Using color to see the size of the cells
+                        let randomNum = Int.random(in: 1..<9)
+                        var color: UIColor
+                        // Giving each cell a different color ( for now )
+                        if randomNum <= 3 {
+                            color = .red
+                        } else if randomNum == 4 || randomNum == 5 {
+                            color = .purple
+                        } else {
+                            color = .cyan
+                        }
+                        
+                        // Creating a cell at a specific spot
+                        let pixelRect = CGRect(x: x, y: y, width: cellSize, height: cellSize)
+                        
+                        // TODO: - Before production, this should color all the cells white, with a black border
+                        context.setFillColor(color.cgColor)
+                        context.fill(pixelRect)
                     }
-                    
-                    // Creating a cell at a specific spot
-                    let pixelRect = CGRect(x: x, y: y, width: cellSize, height: cellSize)
-                    
-                    context.setFillColor(color.cgColor)
-                    context.fill(pixelRect)
+                }
+            }
+        }
+            
+        // If we do have cells already
+        else {
+            
+            if let context = UIGraphicsGetCurrentContext() {
+                
+                // horizontal
+                for x in stride(from: 0, through: rect.maxX, by: cellSize) {
+                    // vertical
+                    for y in stride(from: 0, through: rect.maxY, by: cellSize) {
+                        //print("\nsum: \(sum), x: \(x), y: \(y), rect.maxX: \(rect.maxX), rect.maxY: \(rect.maxY),by: \(cellSize)")
+                        
+                        // Using color to see the size of the cells
+                        let randomNum = Int.random(in: 1..<9)
+                        
+                        var color: UIColor
+                        
+                        // Giving each cell a different color ( for now )
+                        if randomNum <= 3 {
+                            color = .red
+                        } else if randomNum == 4 || randomNum == 5 {
+                            color = .purple
+                        } else {
+                            color = .cyan
+                        }
+                        
+                        // Creating a cell at a specific spot
+                        let pixelRect = CGRect(x: x, y: y, width: cellSize, height: cellSize)
+                        
+                        context.setFillColor(color.cgColor)
+                        context.fill(pixelRect)
+                        
+                        //                    var myLabel = UILabel(frame: pixelRect)
+                        //                    myLabel.text = "\(sum)"
+                        //                    myLabel.textAlignment = .center
+                        //                    myLabel.textColor = .black
+                        //                    myLabel.font = myLabel.font.withSize(5)
+                        //
+                        //                    self.addSubview(myLabel)
+                        //
+                        //                    sum += 1
+                    }
                     
                     
                 }
-                
             }
         }
     }
     
-    private func setUpGrid(){
+    private func setUpGrid() {
         
         // Accept user interaction
         isUserInteractionEnabled = false
@@ -67,7 +126,20 @@ class Grid: UIView {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
         
-        // TODO: - Decided if you want rounded courners or not
+        // TODO: - Decide if you want rounded courners or not
         //layer.cornerRadius = bounds.width / 2
+    }
+    
+    // Create a new cell to add to cellController.cells
+    private func createNewCell(x: CGFloat, y: CGFloat) {
+        
+        guard let cellController = cellController else { return }
+        
+        // Creating a Cell and adding it to the array
+        let coordinates = Coordinates(x: x, y: y)
+        
+        let cell = Cell(coordinates: coordinates, state: .dead)
+        
+        cellController.addNewCell(cell: cell)
     }
 }
