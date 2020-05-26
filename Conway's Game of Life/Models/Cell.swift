@@ -10,4 +10,6 @@ import Foundation
 
 struct Cell {
     var id: UUID
+    var state: CellState
+    var neighborhood: Neighborhood
 }
