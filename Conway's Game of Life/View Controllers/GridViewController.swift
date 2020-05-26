@@ -15,8 +15,6 @@ class GridViewController: UIViewController {
     var cellController = CellController()
     var timer = Timer()
     
-    var sum = 1
-    
     // MARK: - Outlets
     @IBOutlet weak var grid: Grid!
     
@@ -24,11 +22,14 @@ class GridViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setUpTimer()
+        //setUpTimer()
         grid.cellController = cellController
     }
     
     // MARK: - Actions
+    @IBAction func startTimerButtonTapped(_ sender: UIButton) {
+        setUpTimer()
+    }
     
     // Re-draws the grid
     @IBAction func runOnceButtonTapped(_ sender: UIButton) {
@@ -44,10 +45,7 @@ class GridViewController: UIViewController {
     
     // Starts the timer to refresh the grid
     private func setUpTimer() {
-        
-        // TODO: - Comment this back in to set the timer:
-        
-        //timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(refreshGrid), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(refreshGrid), userInfo: nil, repeats: true)
     }
     
     // Selector function that re-draws (refreshes) the grid
