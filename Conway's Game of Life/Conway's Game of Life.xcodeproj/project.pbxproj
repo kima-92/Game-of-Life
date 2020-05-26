@@ -13,6 +13,7 @@
 		FABCE638247C8236007F230D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FABCE637247C8236007F230D /* Assets.xcassets */; };
 		FABCE63B247C8236007F230D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABCE639247C8236007F230D /* LaunchScreen.storyboard */; };
 		FABCE648247C88CC007F230D /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCE647247C88CC007F230D /* GridViewController.swift */; };
+		FAEEE437247D6F0100CCA425 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEE436247D6F0100CCA425 /* Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FABCE63A247C8236007F230D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FABCE63C247C8236007F230D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FABCE647247C88CC007F230D /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+		FAEEE436247D6F0100CCA425 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		FABCE643247C8266007F230D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FAEEE436247D6F0100CCA425 /* Cell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FABCE62F247C8234007F230D /* AppDelegate.swift in Sources */,
+				FAEEE437247D6F0100CCA425 /* Cell.swift in Sources */,
 				FABCE631247C8234007F230D /* SceneDelegate.swift in Sources */,
 				FABCE648247C88CC007F230D /* GridViewController.swift in Sources */,
 			);
