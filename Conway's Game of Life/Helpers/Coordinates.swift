@@ -1,5 +1,5 @@
 //
-//  Cell.swift
+//  Coordinates.swift
 //  Conway's Game of Life
 //
 //  Created by macbook on 5/26/20.
@@ -9,11 +9,7 @@
 import Foundation
 import UIKit
 
-struct Cell {
-    //var id: UUID
-    
-    var coordinates: Coordinates
-    var state: CellState
-    
-    var neighborhood: Neighborhood?
+struct Coordinates {
+    var x: CGFloat
+    var y: CGFloat
 }

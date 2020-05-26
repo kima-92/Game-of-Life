@@ -15,28 +15,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWR-Ut-77d">
-                                <rect key="frame" x="87" y="228" width="240" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWR-Ut-77d" customClass="Grid" customModule="Conway_s_Game_of_Life" customModuleProvider="target">
+                                <rect key="frame" x="20" y="94" width="374" height="561"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FWR-Ut-77d" secondAttribute="height" multiplier="1:1.5" id="KKQ-tK-u06"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENq-KB-JZq">
-                                <rect key="frame" x="40" y="519" width="334" height="30"/>
-                                <state key="normal" title="grid"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fo-H5-dvM">
+                                <rect key="frame" x="30" y="763" width="354" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Stop Timer!"/>
                                 <connections>
-                                    <action selector="gridButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="U6x-X0-XTH"/>
+                                    <action selector="stopTimerButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="RsJ-qf-rlm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWw-zf-Mn6">
+                                <rect key="frame" x="30" y="685" width="354" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Run Once"/>
+                                <connections>
+                                    <action selector="runOnceButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="oeW-Gb-vNP"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="FWR-Ut-77d" firstAttribute="top" secondItem="1z7-QE-TCN" secondAttribute="top" constant="50" id="0oH-35-RBB"/>
-                            <constraint firstItem="ENq-KB-JZq" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="40" id="DSV-XJ-YpO"/>
+                            <constraint firstItem="TWw-zf-Mn6" firstAttribute="top" secondItem="FWR-Ut-77d" secondAttribute="bottom" constant="30" id="5jq-3O-Ruf"/>
+                            <constraint firstItem="1z7-QE-TCN" firstAttribute="trailing" secondItem="5fo-H5-dvM" secondAttribute="trailing" constant="30" id="A6z-5H-gh1"/>
                             <constraint firstItem="FWR-Ut-77d" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="20" id="HhV-xe-mgJ"/>
-                            <constraint firstItem="1z7-QE-TCN" firstAttribute="trailing" secondItem="ENq-KB-JZq" secondAttribute="trailing" constant="40" id="mVB-S7-sTu"/>
-                            <constraint firstItem="ENq-KB-JZq" firstAttribute="top" secondItem="FWR-Ut-77d" secondAttribute="bottom" constant="100" id="qLe-JN-TkI"/>
+                            <constraint firstItem="1z7-QE-TCN" firstAttribute="trailing" secondItem="TWw-zf-Mn6" secondAttribute="trailing" constant="30" id="NAZ-wJ-OMh"/>
+                            <constraint firstItem="1z7-QE-TCN" firstAttribute="trailing" secondItem="FWR-Ut-77d" secondAttribute="trailing" constant="20" id="f8z-l5-Gef"/>
+                            <constraint firstItem="5fo-H5-dvM" firstAttribute="top" secondItem="TWw-zf-Mn6" secondAttribute="bottom" constant="30" id="fPY-09-h6o"/>
+                            <constraint firstItem="TWw-zf-Mn6" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="30" id="oTt-2u-af3"/>
+                            <constraint firstItem="5fo-H5-dvM" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="30" id="q2u-pY-K2j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1z7-QE-TCN"/>
                     </view>
+                    <connections>
+                        <outlet property="grid" destination="FWR-Ut-77d" id="y6r-IZ-kiA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4jN-hL-7O8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
