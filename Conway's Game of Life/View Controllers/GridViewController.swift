@@ -13,11 +13,17 @@ class GridViewController: UIViewController {
     
     // MARK: - Properties
     var timer = Timer()
-
+    
+    // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setUpTimer()
+    }
+    
+    // MARK: - Actions
+    @IBAction func stopTimerButtonTapped(_ sender: UIButton) {
+        timer.invalidate()
     }
     
     private func setUpTimer() {
