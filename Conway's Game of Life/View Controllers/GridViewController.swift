@@ -16,11 +16,6 @@ class GridViewController: UIViewController {
         
     }
     
-    
-    @IBAction func gridButtonTapped(_ sender: UIButton) {
-
-    }
-    
 
     
 
