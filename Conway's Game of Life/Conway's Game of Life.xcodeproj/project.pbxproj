@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA7194D4247D771A00E7DA16 /* Neighborhood.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7194D3247D771A00E7DA16 /* Neighborhood.swift */; };
 		FABCE62F247C8234007F230D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCE62E247C8234007F230D /* AppDelegate.swift */; };
 		FABCE631247C8234007F230D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCE630247C8234007F230D /* SceneDelegate.swift */; };
 		FABCE636247C8234007F230D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABCE634247C8234007F230D /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA7194D3247D771A00E7DA16 /* Neighborhood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neighborhood.swift; sourceTree = "<group>"; };
 		FABCE62B247C8234007F230D /* Conway's Game of Life.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Conway's Game of Life.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FABCE62E247C8234007F230D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FABCE630247C8234007F230D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,8 @@
 		FABCE642247C825D007F230D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FAEEE438247D6F7800CCA425 /* CellState.swift */,
+				FA7194D3247D771A00E7DA16 /* Neighborhood.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -85,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				FAEEE436247D6F0100CCA425 /* Cell.swift */,
-				FAEEE438247D6F7800CCA425 /* CellState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				FABCE62F247C8234007F230D /* AppDelegate.swift in Sources */,
 				FAEEE439247D6F7800CCA425 /* CellState.swift in Sources */,
 				FAEEE437247D6F0100CCA425 /* Cell.swift in Sources */,
+				FA7194D4247D771A00E7DA16 /* Neighborhood.swift in Sources */,
 				FABCE631247C8234007F230D /* SceneDelegate.swift in Sources */,
 				FABCE648247C88CC007F230D /* GridViewController.swift in Sources */,
 			);
