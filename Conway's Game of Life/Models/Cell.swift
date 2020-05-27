@@ -10,10 +10,8 @@ import Foundation
 import UIKit
 
 struct Cell {
-    //var id: UUID
-    
+    var indexID: Int
     var coordinates: Coordinates
     var state: CellState
-    
-    var neighborhood: Neighborhood?
+    var neighborhoodByID: NeighborhoodCoordinates?
 }

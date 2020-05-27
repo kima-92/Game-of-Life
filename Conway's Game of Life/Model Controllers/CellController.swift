@@ -29,11 +29,11 @@ class CellController {
     }
     
     // Fetch the neighborhood of One cell
-    func getNeighborhoodFor(cell: Cell) -> Neighborhood? {
+    func getNeighborhoodFor(cell: Cell) -> NeigborhoodByID? {
         
         guard let cellSize = cellSize else { return nil }
         
-        var newNeighborhood = Neighborhood()
+        var newNeighborhood = NeigborhoodByID()
         
         // This cell's coordinates
         let x = cell.coordinates.x
@@ -56,44 +56,52 @@ class CellController {
             // Vertial & Horizontal
             
             if foundCell.coordinates.x == topCoordinates.x && foundCell.coordinates.y == topCoordinates.y {
-                newNeighborhood.top = topCoordinates
+                newNeighborhood.top = foundCell.indexID
+//                newNeighborhood.topCellCoordinates = topCoordinates
                 //break
             }
             
             else if foundCell.coordinates.x == bottomCoordinates.x && foundCell.coordinates.y == bottomCoordinates.y {
-                newNeighborhood.bottom = bottomCoordinates
-                //break
+                newNeighborhood.bottom = foundCell.indexID
+//                newNeighborhood.bottomCellCoordinates = bottomCoordinates
+//                //break
             }
             
             else if foundCell.coordinates.x == leftCoordinates.x && foundCell.coordinates.y == leftCoordinates.y {
-                newNeighborhood.left = leftCoordinates
+                newNeighborhood.left = foundCell.indexID
+//                newNeighborhood.leftCellCoordinates = leftCoordinates
                 //break
             }
             
             else if foundCell.coordinates.x == rightCoordinates.x && foundCell.coordinates.y == rightCoordinates.y {
-                newNeighborhood.right = rightCoordinates
+                newNeighborhood.right = foundCell.indexID
+//                newNeighborhood.rightCellCoordinates = rightCoordinates
                 //break
             }
             
             // Diagonal
             
             else if foundCell.coordinates.x == upperLeftCoordinates.x && foundCell.coordinates.y == upperLeftCoordinates.y {
-                newNeighborhood.upperLeft = upperLeftCoordinates
+                newNeighborhood.upperLeft = foundCell.indexID
+//                newNeighborhood.upperLeftCellCoordinates = upperLeftCoordinates
                 //break
             }
             
             else if foundCell.coordinates.x == upperRightCoordinates.x && foundCell.coordinates.y == upperRightCoordinates.y {
-                newNeighborhood.upperRight = upperRightCoordinates
+                newNeighborhood.upperRight = foundCell.indexID
+//                newNeighborhood.upperRightCellCoordinates = upperRightCoordinates
                 //break
             }
             
             else if foundCell.coordinates.x == bottomLeftCoordinates.x && foundCell.coordinates.y == bottomLeftCoordinates.y {
-                newNeighborhood.bottomLeft = bottomLeftCoordinates
+                newNeighborhood.bottomLeft = foundCell.indexID
+//                newNeighborhood.bottomLeftCellCoordinates = bottomLeftCoordinates
                 //break
             }
             
             else if foundCell.coordinates.x == bottomRightCoordinates.x && foundCell.coordinates.y == bottomRightCoordinates.y {
-                newNeighborhood.bottomRight = bottomRightCoordinates
+                newNeighborhood.bottomRight = foundCell.indexID
+//                newNeighborhood.bottomRightCellCoordinates = bottomRightCoordinates
                 //break
             }
         }

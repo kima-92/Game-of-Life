@@ -11,12 +11,14 @@
 		FA7194D6247D7A1200E7DA16 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7194D5247D7A1200E7DA16 /* Grid.swift */; };
 		FA7194D9247DAA3D00E7DA16 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7194D8247DAA3D00E7DA16 /* CellController.swift */; };
 		FA7194DB247DBCDE00E7DA16 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7194DA247DBCDE00E7DA16 /* Coordinates.swift */; };
+		FA7194DD247EF6DB00E7DA16 /* NeighborhoodCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7194DC247EF6DB00E7DA16 /* NeighborhoodCoordinates.swift */; };
 		FABCE62F247C8234007F230D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCE62E247C8234007F230D /* AppDelegate.swift */; };
 		FABCE631247C8234007F230D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCE630247C8234007F230D /* SceneDelegate.swift */; };
 		FABCE636247C8234007F230D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABCE634247C8234007F230D /* Main.storyboard */; };
 		FABCE638247C8236007F230D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FABCE637247C8236007F230D /* Assets.xcassets */; };
 		FABCE63B247C8236007F230D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABCE639247C8236007F230D /* LaunchScreen.storyboard */; };
 		FABCE648247C88CC007F230D /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCE647247C88CC007F230D /* GridViewController.swift */; };
+		FAC4990F247EFA7400FD0749 /* NeighborhoodByID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC4990E247EFA7400FD0749 /* NeighborhoodByID.swift */; };
 		FAEEE437247D6F0100CCA425 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEE436247D6F0100CCA425 /* Cell.swift */; };
 		FAEEE439247D6F7800CCA425 /* CellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEE438247D6F7800CCA425 /* CellState.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +28,7 @@
 		FA7194D5247D7A1200E7DA16 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		FA7194D8247DAA3D00E7DA16 /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		FA7194DA247DBCDE00E7DA16 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		FA7194DC247EF6DB00E7DA16 /* NeighborhoodCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodCoordinates.swift; sourceTree = "<group>"; };
 		FABCE62B247C8234007F230D /* Conway's Game of Life.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Conway's Game of Life.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FABCE62E247C8234007F230D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FABCE630247C8234007F230D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		FABCE63A247C8236007F230D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FABCE63C247C8236007F230D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FABCE647247C88CC007F230D /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+		FAC4990E247EFA7400FD0749 /* NeighborhoodByID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodByID.swift; sourceTree = "<group>"; };
 		FAEEE436247D6F0100CCA425 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		FAEEE438247D6F7800CCA425 /* CellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,8 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				FAEEE438247D6F7800CCA425 /* CellState.swift */,
-				FA7194D3247D771A00E7DA16 /* Neighborhood.swift */,
-				FA7194DA247DBCDE00E7DA16 /* Coordinates.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -104,8 +106,12 @@
 		FABCE643247C8266007F230D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FAEEE436247D6F0100CCA425 /* Cell.swift */,
 				FA7194D5247D7A1200E7DA16 /* Grid.swift */,
+				FAEEE436247D6F0100CCA425 /* Cell.swift */,
+				FA7194D3247D771A00E7DA16 /* Neighborhood.swift */,
+				FA7194DC247EF6DB00E7DA16 /* NeighborhoodCoordinates.swift */,
+				FA7194DA247DBCDE00E7DA16 /* Coordinates.swift */,
+				FAC4990E247EFA7400FD0749 /* NeighborhoodByID.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -212,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC4990F247EFA7400FD0749 /* NeighborhoodByID.swift in Sources */,
 				FABCE62F247C8234007F230D /* AppDelegate.swift in Sources */,
 				FAEEE439247D6F7800CCA425 /* CellState.swift in Sources */,
 				FAEEE437247D6F0100CCA425 /* Cell.swift in Sources */,
@@ -221,6 +228,7 @@
 				FA7194DB247DBCDE00E7DA16 /* Coordinates.swift in Sources */,
 				FA7194D6247D7A1200E7DA16 /* Grid.swift in Sources */,
 				FABCE648247C88CC007F230D /* GridViewController.swift in Sources */,
+				FA7194DD247EF6DB00E7DA16 /* NeighborhoodCoordinates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
