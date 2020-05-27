@@ -28,6 +28,42 @@ class CellController {
         cells.append(cell)
     }
     
+    // Set initial Pattern
+    func setInitialPattern() {
+        guard !cells.isEmpty else { return }
+        
+        var myCell = cells[1_000]
+        
+        cells[1_000].state = .live
+        
+        let cellNeighborhood = getNeighborhoodFor(cell: myCell)
+        
+        let topID = cellNeighborhood?.top
+        let bottomID = cellNeighborhood?.bottom
+        let leftID = cellNeighborhood?.left
+        let rightID = cellNeighborhood?.right
+        
+        if let topID = topID {
+            
+            cells[topID].state = .live
+        }
+        
+        if let bottomID = bottomID {
+            
+            cells[bottomID].state = .live
+        }
+        
+        if let leftID = leftID {
+            
+            cells[leftID].state = .live
+        }
+        
+        if let rightID = rightID {
+            
+            cells[rightID].state = .live
+        }
+    }
+    
     // Fetch the neighborhood of One cell
     func getNeighborhoodFor(cell: Cell) -> NeigborhoodByID? {
         

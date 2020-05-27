@@ -34,18 +34,21 @@ class GridViewController: UIViewController {
     
     // Re-draws the grid
     @IBAction func runOnceButtonTapped(_ sender: UIButton) {
-        grid.setNeedsDisplay()
+        //grid.setNeedsDisplay()
+        
+        // Testing the setInitialPattern function
+        cellController.setInitialPattern()
     }
     
     // Stop the timer
     @IBAction func stopTimerButtonTapped(_ sender: UIButton) {
         timer.invalidate()
         
-        // Testing cellController.getNeighborhoodFor function
-        let cellsCount = cellController.cells.count
-        let oneCell = cellController.cells[cellsCount - 1]
-        let neighborhood = cellController.getNeighborhoodFor(cell: oneCell)
-        print("\nCell at : \(oneCell.coordinates) \nhas a neightborhood:\n\n\(neighborhood)")
+//        // Testing cellController.getNeighborhoodFor function
+//        let cellsCount = cellController.cells.count
+//        let oneCell = cellController.cells[cellsCount - 1]
+//        let neighborhood = cellController.getNeighborhoodFor(cell: oneCell)
+//        print("\nCell at : \(oneCell.coordinates) \nhas a neightborhood:\n\n\(neighborhood)")
     }
     
     // MARK: - Methods
