@@ -10,13 +10,13 @@ import Foundation
 
 struct Neighborhood {
     
-    var top: UUID
-    var bottom: UUID
-    var right: UUID
-    var left: UUID
+    var top: Coordinates
+    var bottom: Coordinates
+    var right: Coordinates
+    var left: Coordinates
     
-    var upperRight: UUID
-    var upperLeft: UUID
-    var bottomRight: UUID
-    var bottomLeft: UUID
+    var upperRight: Coordinates
+    var upperLeft: Coordinates
+    var bottomRight: Coordinates
+    var bottomLeft: Coordinates
 }
