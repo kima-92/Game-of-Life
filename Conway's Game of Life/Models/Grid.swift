@@ -11,6 +11,7 @@ import UIKit
 class Grid: UIView {
     
     var cellController: CellController?
+    var cellSize: CGFloat?
     
     //var sum = 1
     
@@ -24,10 +25,10 @@ class Grid: UIView {
     // MARK: - Drawing the Grid
     override func draw(_ rect: CGRect) {
         
-        guard let cellController = cellController else { return }
+        guard let cellController = cellController,
+            let cellSize = cellSize else { return }
         
         // Set the size of each cell in the grid
-        let cellSize: CGFloat = 8
         
         
         // If we have no cells yet

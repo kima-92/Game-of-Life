@@ -15,6 +15,8 @@ class GridViewController: UIViewController {
     var cellController = CellController()
     var timer = Timer()
     
+    let cellSize: CGFloat = 8
+    
     // MARK: - Outlets
     @IBOutlet weak var grid: Grid!
     
@@ -22,8 +24,7 @@ class GridViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //setUpTimer()
-        grid.cellController = cellController
+        updateViews()
     }
     
     // MARK: - Actions
@@ -51,6 +52,15 @@ class GridViewController: UIViewController {
     // Selector function that re-draws (refreshes) the grid
     @objc private func refreshGrid() {
         grid.setNeedsDisplay()
+    }
+    
+    private func updateViews() {
+        // Pass the cellController to the Grid
+        grid.cellController = cellController
+        
+        // Pass the cellSize to the cellController and the Grid
+        //cellController.cellSize = cellSize
+        grid.cellSize = cellSize
     }
     
 
