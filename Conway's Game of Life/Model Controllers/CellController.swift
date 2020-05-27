@@ -107,4 +107,46 @@ class CellController {
         }
         return newNeighborhood
     }
+    
+    func getNextStateFor(cell: Cell) -> CellState? {
+        
+        var neighborhood: [Cell] = []
+        
+        
+        // Id's of all the neighboring cells (as an neigborhoodById Object)
+        guard let neighborhoodByID = getNeighborhoodFor(cell: cell) else { return nil}
+        
+        
+        
+        // Array of ID's, of all the neighboring cells
+        let ids = neighborhoodByID.cells
+        
+        // Fetch each none nil cell of this cell's neighborhood
+        // And add it to the neighborhood array
+        for id in ids {
+            if let id = id {
+                neighborhood.append(self.cells[id])
+            }
+        }
+        
+        // Store the dead and the alive cells in 2 arrays
+        _ = neighborhood.filter({$0.state == .dead})
+        let aliveCells = neighborhood.filter({$0.state == .live})
+        
+        // Apply the Game of Life Rules to decide what's this cell's next state
+        if cell.state == .live && aliveCells.count < 2 {
+            return .dead
+            
+        } else if cell.state == .live && aliveCells.count > 3 {
+            return .dead
+            
+        } else if cell.state == .dead && aliveCells.count == 3 {
+            return .live
+            
+        } else {
+            print("Reached last else statement in the getNextStateFor function")
+            return .dead
+        }
+        
+    }
 }
