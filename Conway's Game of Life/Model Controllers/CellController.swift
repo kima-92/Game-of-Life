@@ -45,7 +45,7 @@ class CellController {
         let leftCoordinates = Coordinates(x: x, y: y - cellSize)
         let rightCoordinates = Coordinates(x: x, y: y + cellSize)
         
-        let upperLeftCoordinates = Coordinates(x: x - cellSize, y: y + cellSize)
+        let upperLeftCoordinates = Coordinates(x: x - cellSize, y: y - cellSize)
         let upperRightCoordinates = Coordinates(x: x - cellSize, y: y + cellSize)
         let bottomLeftCoordinates = Coordinates(x: x + cellSize, y: y - cellSize)
         let bottomRightCoordinates = Coordinates(x: x + cellSize, y: y + cellSize)

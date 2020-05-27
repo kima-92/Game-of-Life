@@ -42,7 +42,8 @@ class GridViewController: UIViewController {
         timer.invalidate()
         
         // Testing cellController.getNeighborhoodFor function
-        let oneCell = cellController.cells[200]
+        let cellsCount = cellController.cells.count
+        let oneCell = cellController.cells[cellsCount - 1]
         let neighborhood = cellController.getNeighborhoodFor(cell: oneCell)
         print("\nCell at : \(oneCell.coordinates) \nhas a neightborhood:\n\n\(neighborhood)")
     }
