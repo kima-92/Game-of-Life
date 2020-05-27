@@ -15,7 +15,7 @@ class GridViewController: UIViewController {
     var cellController = CellController()
     var timer = Timer()
     
-    var sum = 1
+    let cellSize: CGFloat = 8
     
     // MARK: - Outlets
     @IBOutlet weak var grid: Grid!
@@ -24,11 +24,13 @@ class GridViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setUpTimer()
-        grid.cellController = cellController
+        updateViews()
     }
     
     // MARK: - Actions
+    @IBAction func startTimerButtonTapped(_ sender: UIButton) {
+        setUpTimer()
+    }
     
     // Re-draws the grid
     @IBAction func runOnceButtonTapped(_ sender: UIButton) {
@@ -38,21 +40,33 @@ class GridViewController: UIViewController {
     // Stop the timer
     @IBAction func stopTimerButtonTapped(_ sender: UIButton) {
         timer.invalidate()
+        
+        // Testing cellController.getNeighborhoodFor function
+        let cellsCount = cellController.cells.count
+        let oneCell = cellController.cells[cellsCount - 1]
+        let neighborhood = cellController.getNeighborhoodFor(cell: oneCell)
+        print("\nCell at : \(oneCell.coordinates) \nhas a neightborhood:\n\n\(neighborhood)")
     }
     
     // MARK: - Methods
     
     // Starts the timer to refresh the grid
     private func setUpTimer() {
-        
-        // TODO: - Comment this back in to set the timer:
-        
-        //timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(refreshGrid), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(refreshGrid), userInfo: nil, repeats: true)
     }
     
     // Selector function that re-draws (refreshes) the grid
     @objc private func refreshGrid() {
         grid.setNeedsDisplay()
+    }
+    
+    private func updateViews() {
+        // Pass the cellController to the Grid
+        grid.cellController = cellController
+        
+        // Pass the cellSize to the cellController and the Grid
+        cellController.cellSize = cellSize
+        grid.cellSize = cellSize
     }
     
 

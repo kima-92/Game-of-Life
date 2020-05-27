@@ -11,8 +11,9 @@ import UIKit
 class Grid: UIView {
     
     var cellController: CellController?
+    var cellSize: CGFloat?
     
-    //var sum = 1
+    var indexSum = 0
     
     // Setup for the Grid before the screen loads
     override func layoutSubviews() {
@@ -24,10 +25,10 @@ class Grid: UIView {
     // MARK: - Drawing the Grid
     override func draw(_ rect: CGRect) {
         
-        guard let cellController = cellController else { return }
+        guard let cellController = cellController,
+            let cellSize = cellSize else { return }
         
         // Set the size of each cell in the grid
-        let cellSize: CGFloat = 8
         
         
         // If we have no cells yet
@@ -41,7 +42,7 @@ class Grid: UIView {
                     for y in stride(from: 0, through: rect.maxY, by: cellSize) {
                         
                         // Doing work for each cell
-                        createNewCell(x: x, y: y)
+                        createNewCell(indexID: indexSum, x: x, y: y)
                         
                         let lightGreyColor: UIColor = .lightGray
 
@@ -54,6 +55,7 @@ class Grid: UIView {
                         
 //                        context.setStrokeColor(blackColor.cgColor)
 //                        context.setLineWidth(<#T##width: CGFloat##CGFloat#>)
+                        indexSum += 1
                     }
                 }
             }
@@ -112,14 +114,14 @@ class Grid: UIView {
     }
     
     // Create a new cell to add to cellController.cells
-    private func createNewCell(x: CGFloat, y: CGFloat) {
+    private func createNewCell(indexID: Int, x: CGFloat, y: CGFloat) {
         
         guard let cellController = cellController else { return }
         
         // Creating a Cell and adding it to the array
         let coordinates = Coordinates(x: x, y: y)
         
-        let cell = Cell(coordinates: coordinates, state: .dead)
+        let cell = Cell(indexID: indexID, coordinates: coordinates, state: .dead)
         
         cellController.addNewCell(cell: cell)
     }
