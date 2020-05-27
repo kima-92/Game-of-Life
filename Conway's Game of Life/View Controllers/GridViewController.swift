@@ -40,6 +40,11 @@ class GridViewController: UIViewController {
     // Stop the timer
     @IBAction func stopTimerButtonTapped(_ sender: UIButton) {
         timer.invalidate()
+        
+        // Testing cellController.getNeighborhoodFor function
+        let oneCell = cellController.cells[200]
+        let neighborhood = cellController.getNeighborhoodFor(cell: oneCell)
+        print("\nCell at : \(oneCell.coordinates) \nhas a neightborhood:\n\n\(neighborhood)")
     }
     
     // MARK: - Methods
@@ -59,7 +64,7 @@ class GridViewController: UIViewController {
         grid.cellController = cellController
         
         // Pass the cellSize to the cellController and the Grid
-        //cellController.cellSize = cellSize
+        cellController.cellSize = cellSize
         grid.cellSize = cellSize
     }
     
