@@ -12,6 +12,7 @@ class Grid: UIView {
     
     var cellController: CellController?
     var cellSize: CGFloat?
+    var cell: Cell?
     
     var indexSum = 0
     
@@ -72,19 +73,44 @@ class Grid: UIView {
                     for y in stride(from: 0, through: rect.maxY, by: cellSize) {
                         //print("\nsum: \(sum), x: \(x), y: \(y), rect.maxX: \(rect.maxX), rect.maxY: \(rect.maxY),by: \(cellSize)")
                         
-                        // Using color to see the size of the cells
-                        let randomNum = Int.random(in: 1..<9)
+                        // Set the color to white (dead) by default
+                        var color: UIColor = .systemPink
                         
-                        var color: UIColor
-                        
-                        // Giving each cell a different color ( for now )
-                        if randomNum <= 3 {
-                            color = .red
-                        } else if randomNum == 4 || randomNum == 5 {
-                            color = .purple
-                        } else {
-                            color = .cyan
+                        // Using these coordinates, get this cell from cellController.cells
+                        cell = cellController.getCellByCoordinates(x: x, y: y)
+
+                        guard let cell = cell else { return }
+
+                        // Get the next state for this cell
+                        let nextState = cellController.getNextStateFor(cell: cell)
+
+                        guard nextState != nil else { return }
+
+                        // If the next state for this cell is alive,
+                        // Set color to black
+                        if nextState == .live {
+                            color = .black
                         }
+
+                        // Change this cell's state
+                        // If the current state of this cell is not what it should be for this generation
+                        if cell.state != nextState {
+                            cellController.changeStateForCellWith(id: cell.indexID)
+                        }
+                        
+                        
+//                        //Using color to see the size of the cells
+//                        let randomNum = Int.random(in: 1..<9)
+//
+//
+//                        //Giving each cell a different color ( for now )
+//                        if randomNum <= 3 {
+//                            color = .red
+//                        } else if randomNum == 4 || randomNum == 5 {
+//                            color = .purple
+//                        } else {
+//                            color = .cyan
+//                        }
                         
                         // Creating a cell at a specific spot
                         let pixelRect = CGRect(x: x, y: y, width: cellSize, height: cellSize)

@@ -28,13 +28,24 @@ class CellController {
         cells.append(cell)
     }
     
+    // Get cell by Coordinates
+    func getCellByCoordinates(x: CGFloat, y: CGFloat) -> Cell {
+        let cell = cells.filter({$0.coordinates.x == x && $0.coordinates.y == y})
+        
+        return cell[0]
+    }
+    
     // Set initial Pattern
     func setInitialPattern() {
         guard !cells.isEmpty else { return }
         
-        var myCell = cells[1_000]
+        // 1
         
-        cells[1_000].state = .live
+        let cellIndex = 0 //1_000
+        
+        let myCell = cells[cellIndex]
+        
+        cells[cellIndex].state = .live
         
         let cellNeighborhood = getNeighborhoodFor(cell: myCell)
         
@@ -61,6 +72,44 @@ class CellController {
         if let rightID = rightID {
             
             cells[rightID].state = .live
+        }
+        
+        
+        
+        
+        // 2
+        
+        let secondCellIndex = 1 //1_000
+        
+        let mySecondCell = cells[cellIndex]
+        
+        cells[secondCellIndex].state = .live
+        
+        let secondCellNeighborhood = getNeighborhoodFor(cell: mySecondCell)
+        
+        let topID2 = secondCellNeighborhood?.top
+        let bottomID2 = secondCellNeighborhood?.bottom
+        let leftID2 = secondCellNeighborhood?.left
+        let rightID2 = secondCellNeighborhood?.right
+        
+        if let topID2 = topID2 {
+            
+            cells[topID2].state = .live
+        }
+        
+        if let bottomID2 = bottomID2 {
+            
+            cells[bottomID2].state = .live
+        }
+        
+        if let leftID2 = leftID2 {
+            
+            cells[leftID2].state = .live
+        }
+        
+        if let rightID2 = rightID2 {
+            
+            cells[rightID2].state = .live
         }
     }
     
@@ -184,5 +233,17 @@ class CellController {
             return .dead
         }
         
+    }
+    
+    // Change the state of One Cell
+    func changeStateForCellWith(id: Int) {
+        
+        switch cells[id].state {
+            
+        case .dead:
+            cells[id].state = .live
+        case .live:
+            cells[id].state = .dead
+        }
     }
 }
