@@ -15,7 +15,7 @@ class GridViewController: UIViewController {
     var cellController = CellController()
     var timer = Timer()
     
-    let cellSize: CGFloat = 8
+    var cellSize: CGFloat = 40  //8
     
     // MARK: - Outlets
     @IBOutlet weak var grid: Grid!
@@ -28,30 +28,38 @@ class GridViewController: UIViewController {
     }
     
     // MARK: - Actions
+    @IBAction func gridTapped(_ sender: Grid) {
+        grid.setNeedsDisplay()
+    }
+    
+    // Set Initial Pattern
+    @IBAction func setPatternButtonTapped(_ sender: UIButton) {
+        // Testing the setInitialPattern function
+        cellController.setInitialPattern()
+    }
+    
+    // User stated the timer
     @IBAction func startTimerButtonTapped(_ sender: UIButton) {
         setUpTimer()
     }
     
-    // Re-draws the grid
+    // Re-draws the grid Once
     @IBAction func runOnceButtonTapped(_ sender: UIButton) {
-        grid.setNeedsDisplay()
+        cellController.setShouldGameRunOnce(to: true)
+        self.grid.setNeedsDisplay()
     }
     
     // Stop the timer
     @IBAction func stopTimerButtonTapped(_ sender: UIButton) {
+        cellController.setDidStartGame(to: false)
         timer.invalidate()
-        
-        // Testing cellController.getNeighborhoodFor function
-        let cellsCount = cellController.cells.count
-        let oneCell = cellController.cells[cellsCount - 1]
-        let neighborhood = cellController.getNeighborhoodFor(cell: oneCell)
-        print("\nCell at : \(oneCell.coordinates) \nhas a neightborhood:\n\n\(neighborhood)")
     }
     
     // MARK: - Methods
     
-    // Starts the timer to refresh the grid
+    // Starts the timer to keep refreshing the Grid
     private func setUpTimer() {
+        cellController.setDidStartGame(to: true)
         timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(refreshGrid), userInfo: nil, repeats: true)
     }
     
@@ -67,6 +75,9 @@ class GridViewController: UIViewController {
         // Pass the cellSize to the cellController and the Grid
         cellController.cellSize = cellSize
         grid.cellSize = cellSize
+        
+        // Setting the cell size
+        cellSize = grid.bounds.width / 4   //40  //8
     }
     
 

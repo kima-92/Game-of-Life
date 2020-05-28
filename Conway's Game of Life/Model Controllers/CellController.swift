@@ -16,16 +16,202 @@ class CellController {
     var cellSize: CGFloat?
     
     var cell: Cell?
+    var startedTimer: Bool = false
+    var shouldGameRunOnce: Bool = false
+    
+    var rects: [CGRect] {
+        let rects = cells.compactMap({ $0.rect })
+        
+        return rects
+    }
     
     // MARK: - Methods
+    
+    // Set for when the game starts using the timer
+    func setDidStartGame(to bool: Bool) {
+        if bool != startedTimer {
+            startedTimer = bool
+        }
+    }
+    
+    // Set when the game should only change by one generation
+    func setShouldGameRunOnce(to bool: Bool) {
+        if bool != shouldGameRunOnce {
+            shouldGameRunOnce = bool
+        }
+    }
 
     // Add a cell to the cells array
     func addNewCell(cell: Cell) {
-        
         // When this funciton is called, this cell has NO neighborhood yet!
-        
-        // Add this cell to the cells array
+
         cells.append(cell)
+    }
+    
+    // Get cell by Coordinates
+    func getCellByCoordinates(coordinates: Coordinates) -> Cell {
+        
+        let cell = cells.filter({ $0.coordinates == coordinates })
+        
+        return cell[0]
+    }
+    
+    // Return the Cell that has this CGPoint
+    func getCellThatContains(cgPoint: CGPoint) -> Cell? {
+        
+        for cell in cells {
+            if cell.rect.contains(cgPoint){
+                return cell
+            }
+        }
+        return nil
+    }
+    
+    // Return the CGRect that has this CGPoint
+    func getRectThatContains(cgPoint: CGPoint) -> CGRect? {
+        
+        for rect in rects {
+            if rect.contains(cgPoint){
+                return rect
+            }
+        }
+        return nil
+    }
+    
+    // Get coordinates for touched cell
+    func getTouchedCell(for location: CGPoint) -> Cell? {
+                
+        // Find the off set of the center of the weel
+        
+        let cell = getCellThatContains(cgPoint: location)
+        
+        
+        //        let gridCenter = CGPoint(x: bounds.midX, y: bounds.midY)
+        //
+        //        let dy = location.y - gridCenter.y
+        //        let dx = location.x - gridCenter.x
+        //
+        //        let offset = CGPoint(x: dx / center.x, y: dy / center.y)
+        //
+        //        return color
+        
+        return cell
+        
+    }
+    
+    // Set initial Pattern for Testing
+    func setInitialPattern() {
+        guard !cells.isEmpty else { return }
+        
+        // 1
+        
+        let cellIndex = 0 //1_000
+        
+        let myCell = cells[cellIndex]
+        
+        cells[cellIndex].state = .live
+        
+        let cellNeighborhood = getNeighborhoodFor(cell: myCell)
+        
+        let topID = cellNeighborhood?.top
+        let bottomID = cellNeighborhood?.bottom
+        let leftID = cellNeighborhood?.left
+        let rightID = cellNeighborhood?.right
+        
+        if let topID = topID {
+            
+            cells[topID].state = .live
+        }
+        
+        if let bottomID = bottomID {
+            
+            cells[bottomID].state = .live
+        }
+        
+        if let leftID = leftID {
+            
+            cells[leftID].state = .live
+        }
+        
+        if let rightID = rightID {
+            
+            cells[rightID].state = .live
+        }
+        
+        
+        
+        
+        // 2
+        
+        let secondCellIndex = 2 //1_000
+        
+        let mySecondCell = cells[secondCellIndex]
+        
+        cells[secondCellIndex].state = .live
+        
+        let secondCellNeighborhood = getNeighborhoodFor(cell: mySecondCell)
+        
+        let topID2 = secondCellNeighborhood?.top
+        let bottomID2 = secondCellNeighborhood?.bottom
+        let leftID2 = secondCellNeighborhood?.left
+        let rightID2 = secondCellNeighborhood?.right
+        
+        if let topID2 = topID2 {
+            
+            cells[topID2].state = .live
+        }
+        
+        if let bottomID2 = bottomID2 {
+            
+            cells[bottomID2].state = .live
+        }
+        
+        if let leftID2 = leftID2 {
+            
+            cells[leftID2].state = .live
+        }
+        
+        if let rightID2 = rightID2 {
+            
+            cells[rightID2].state = .live
+        }
+        
+        
+        
+        // 3
+        
+        let thirdCellIndex = 3 //1_000
+        
+        let myThirdCell = cells[thirdCellIndex]
+        
+        cells[thirdCellIndex].state = .live
+        
+        let thirdCellNeighborhood = getNeighborhoodFor(cell: myThirdCell)
+        
+        let topID3 = thirdCellNeighborhood?.top
+        let bottomID3 = thirdCellNeighborhood?.bottom
+        let leftID3 = thirdCellNeighborhood?.left
+        let rightID3 = thirdCellNeighborhood?.right
+        
+        if let topID3 = topID3 {
+            
+            cells[topID3].state = .live
+        }
+        
+        if let bottomID3 = bottomID3 {
+            
+            cells[bottomID3].state = .live
+        }
+        
+        if let leftID3 = leftID3 {
+            
+            cells[leftID3].state = .live
+        }
+        
+        if let rightID3 = rightID3 {
+            
+            cells[rightID3].state = .live
+        }
     }
     
     // Fetch the neighborhood of One cell
@@ -140,13 +326,29 @@ class CellController {
         } else if cell.state == .live && aliveCells.count > 3 {
             return .dead
             
+        } else if cell.state == .live && aliveCells.count == 2 {
+            return .live
+            
+        } else if cell.state == .live && aliveCells.count == 3 {
+            return .live
+            
         } else if cell.state == .dead && aliveCells.count == 3 {
             return .live
             
         } else {
-            print("Reached last else statement in the getNextStateFor function")
             return .dead
         }
+    }
+    
+    // Change the state of One Cell
+    func changeStateForCellWith(id: Int) {
         
+        switch cells[id].state {
+            
+        case .dead:
+            cells[id].state = .live
+        case .live:
+            cells[id].state = .dead
+        }
     }
 }

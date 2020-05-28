@@ -14,4 +14,5 @@ struct Cell {
     var coordinates: Coordinates
     var state: CellState
     var neighborhoodByID: NeighborhoodCoordinates?
+    var rect: CGRect
 }
