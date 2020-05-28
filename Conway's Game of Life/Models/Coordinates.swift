@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Coordinates {
+struct Coordinates: Equatable {
     var x: CGFloat
     var y: CGFloat
 }

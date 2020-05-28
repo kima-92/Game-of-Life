@@ -16,26 +16,90 @@ class CellController {
     var cellSize: CGFloat?
     
     var cell: Cell?
+    var startedTimer: Bool = false
+    var shouldGameRunOnce: Bool = false
+    
+    var rects: [CGRect] {
+        let rects = cells.compactMap({ $0.rect })
+        
+        return rects
+    }
     
     // MARK: - Methods
+    
+    // Set for when the game starts using the timer
+    func setDidStartGame(to bool: Bool) {
+        if bool != startedTimer {
+            startedTimer = bool
+        }
+    }
+    
+    // Set when the game should only change by one generation
+    func setShouldGameRunOnce(to bool: Bool) {
+        if bool != shouldGameRunOnce {
+            shouldGameRunOnce = bool
+        }
+    }
 
     // Add a cell to the cells array
     func addNewCell(cell: Cell) {
-        
         // When this funciton is called, this cell has NO neighborhood yet!
-        
-        // Add this cell to the cells array
+
         cells.append(cell)
     }
     
     // Get cell by Coordinates
-    func getCellByCoordinates(x: CGFloat, y: CGFloat) -> Cell {
-        let cell = cells.filter({$0.coordinates.x == x && $0.coordinates.y == y})
+    func getCellByCoordinates(coordinates: Coordinates) -> Cell {
+        
+        let cell = cells.filter({ $0.coordinates == coordinates })
         
         return cell[0]
     }
     
-    // Set initial Pattern
+    // Return the Cell that has this CGPoint
+    func getCellThatContains(cgPoint: CGPoint) -> Cell? {
+        
+        for cell in cells {
+            if cell.rect.contains(cgPoint){
+                return cell
+            }
+        }
+        return nil
+    }
+    
+    // Return the CGRect that has this CGPoint
+    func getRectThatContains(cgPoint: CGPoint) -> CGRect? {
+        
+        for rect in rects {
+            if rect.contains(cgPoint){
+                return rect
+            }
+        }
+        return nil
+    }
+    
+    // Get coordinates for touched cell
+    func getTouchedCell(for location: CGPoint) -> Cell? {
+                
+        // Find the off set of the center of the weel
+        
+        let cell = getCellThatContains(cgPoint: location)
+        
+        
+        //        let gridCenter = CGPoint(x: bounds.midX, y: bounds.midY)
+        //
+        //        let dy = location.y - gridCenter.y
+        //        let dx = location.x - gridCenter.x
+        //
+        //        let offset = CGPoint(x: dx / center.x, y: dy / center.y)
+        //
+        //        return color
+        
+        return cell
+        
+    }
+    
+    // Set initial Pattern for Testing
     func setInitialPattern() {
         guard !cells.isEmpty else { return }
         
@@ -79,9 +143,9 @@ class CellController {
         
         // 2
         
-        let secondCellIndex = 1 //1_000
+        let secondCellIndex = 2 //1_000
         
-        let mySecondCell = cells[cellIndex]
+        let mySecondCell = cells[secondCellIndex]
         
         cells[secondCellIndex].state = .live
         
@@ -110,6 +174,43 @@ class CellController {
         if let rightID2 = rightID2 {
             
             cells[rightID2].state = .live
+        }
+        
+        
+        
+        // 3
+        
+        let thirdCellIndex = 3 //1_000
+        
+        let myThirdCell = cells[thirdCellIndex]
+        
+        cells[thirdCellIndex].state = .live
+        
+        let thirdCellNeighborhood = getNeighborhoodFor(cell: myThirdCell)
+        
+        let topID3 = thirdCellNeighborhood?.top
+        let bottomID3 = thirdCellNeighborhood?.bottom
+        let leftID3 = thirdCellNeighborhood?.left
+        let rightID3 = thirdCellNeighborhood?.right
+        
+        if let topID3 = topID3 {
+            
+            cells[topID3].state = .live
+        }
+        
+        if let bottomID3 = bottomID3 {
+            
+            cells[bottomID3].state = .live
+        }
+        
+        if let leftID3 = leftID3 {
+            
+            cells[leftID3].state = .live
+        }
+        
+        if let rightID3 = rightID3 {
+            
+            cells[rightID3].state = .live
         }
     }
     
@@ -224,6 +325,12 @@ class CellController {
             
         } else if cell.state == .live && aliveCells.count > 3 {
             return .dead
+            
+        } else if cell.state == .live && aliveCells.count == 2 {
+            return .live
+            
+        } else if cell.state == .live && aliveCells.count == 3 {
+            return .live
             
         } else if cell.state == .dead && aliveCells.count == 3 {
             return .live

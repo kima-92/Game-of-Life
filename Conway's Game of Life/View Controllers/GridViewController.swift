@@ -42,11 +42,13 @@ class GridViewController: UIViewController {
     
     // Re-draws the grid Once
     @IBAction func runOnceButtonTapped(_ sender: UIButton) {
-        grid.setNeedsDisplay()
+        cellController.setShouldGameRunOnce(to: true)
+        self.grid.setNeedsDisplay()
     }
     
     // Stop the timer
     @IBAction func stopTimerButtonTapped(_ sender: UIButton) {
+        cellController.setDidStartGame(to: false)
         timer.invalidate()
     }
     
@@ -54,6 +56,7 @@ class GridViewController: UIViewController {
     
     // Starts the timer to keep refreshing the Grid
     private func setUpTimer() {
+        cellController.setDidStartGame(to: true)
         timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(refreshGrid), userInfo: nil, repeats: true)
     }
     
