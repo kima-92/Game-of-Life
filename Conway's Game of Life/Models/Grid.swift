@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class Grid: UIControl {
     
     var cellController: CellController?
@@ -215,7 +216,7 @@ class Grid: UIControl {
     private func setUpGrid() {
         
         // Accept user interaction
-        isUserInteractionEnabled = false
+        isUserInteractionEnabled = true
         
         clipsToBounds = true
         
@@ -238,6 +239,87 @@ class Grid: UIControl {
         let cell = Cell(indexID: indexID, coordinates: coordinates, state: .dead, rect: rect)
         
         cellController.addNewCell(cell: cell)
+    }
+    
+
+    
+    //MARK: Touch Traking
+    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let touchPoint = touch.location(in: self)
+        
+        if bounds.contains(touchPoint) {
+            
+            guard let cellController = cellController else { return false }
+            
+            //selectedColor = colorWheel.color(for: touchPoint)
+            
+            // Change state of touched cell
+            if let cell = cellController.getCellThatContains(cgPoint: touchPoint) {
+                
+                cellController.changeStateForCellWith(id: cell.indexID)
+                // Re-draw the grid
+                self.setNeedsDisplay()
+                
+                sendActions(for: .valueChanged)
+            }
+        }
+        sendActions(for: .touchDown)
+        return true
+    }
+    
+    override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        
+        let touchPoint = touch.location(in: self)
+        
+        if bounds.contains(touchPoint) {
+            
+            guard let cellController = cellController else { return false }
+            
+            if let cell = cellController.getCellThatContains(cgPoint: touchPoint) {
+                
+                cellController.changeStateForCellWith(id: cell.indexID)
+                // Re-draw the grid
+                self.setNeedsDisplay()
+                
+                sendActions(for: [.valueChanged, .touchDragInside])
+            }
+            
+            //selectedColor = colorWheel.color(for: touchPoint)
+        } else {
+            sendActions(for: .touchDragOutside)
+        }
+        return true
+    }
+    
+    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        super.endTracking(touch, with: event)
+        
+        guard let touch = touch,
+            let cellController = cellController else { return }
+        
+        let touchPoint = touch.location(in: self)
+        
+        if bounds.contains(touchPoint) {
+            
+            //if let cell = cellController.getCellThatContains(cgPoint: touchPoint) {
+                
+                //cellController.changeStateForCellWith(id: cell.indexID)
+                // Re-draw the grid
+                //self.setNeedsDisplay()
+                
+                sendActions(for: [.valueChanged, .touchDragInside])
+            //}
+            //            selectedColor = colorWheel.color(for: touchPoint)
+            
+        } else {
+            sendActions(for: .touchDragOutside)
+        }
+    }
+    
+    override func cancelTracking(with event: UIEvent?) {
+        
+        sendActions(for: .touchCancel)
+        
     }
 }
 

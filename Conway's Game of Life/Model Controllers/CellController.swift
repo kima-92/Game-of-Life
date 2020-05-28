@@ -336,10 +336,8 @@ class CellController {
             return .live
             
         } else {
-            print("Reached last else statement in the getNextStateFor function")
             return .dead
         }
-        
     }
     
     // Change the state of One Cell

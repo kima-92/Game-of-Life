@@ -28,6 +28,9 @@ class GridViewController: UIViewController {
     }
     
     // MARK: - Actions
+    @IBAction func gridTapped(_ sender: Grid) {
+        grid.setNeedsDisplay()
+    }
     
     // Set Initial Pattern
     @IBAction func setPatternButtonTapped(_ sender: UIButton) {

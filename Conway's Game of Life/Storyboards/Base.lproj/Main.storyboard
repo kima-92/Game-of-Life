@@ -21,6 +21,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FWR-Ut-77d" secondAttribute="height" multiplier="1:1" id="KKQ-tK-u06"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="gridTapped:" destination="BaM-5D-goS" eventType="valueChanged" id="VgA-6N-10X"/>
+                                </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AqA-M0-33J">
                                 <rect key="frame" x="30" y="488" width="354" height="210"/>
