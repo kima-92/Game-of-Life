@@ -27,7 +27,6 @@ class GridViewController: UIViewController {
         let buttons = [playButton,
                        clearButton,
                        forwardByOneButton,
-                       backwardByOneButton,
                        fastforwardButton,
                        fastbackwardButton,
                        createRandomPatternButton
@@ -45,7 +44,6 @@ class GridViewController: UIViewController {
     @IBOutlet weak var clearButton: UIButton!
     
     @IBOutlet weak var forwardByOneButton: UIButton!
-    @IBOutlet weak var backwardByOneButton: UIButton!
     @IBOutlet weak var fastforwardButton: UIButton!
     @IBOutlet weak var fastbackwardButton: UIButton!
     
@@ -121,34 +119,24 @@ class GridViewController: UIViewController {
         self.grid.setNeedsDisplay()
     }
     
-    @IBAction func backByOneButtonTapped(_ sender: UIButton) {
-        sender.pulsate()
-        
-    }
-    
     @IBAction func fastforwardButtonTapped(_ sender: UIButton) {
         sender.pulsate()
         
-        if let timer = timer {
+        if let _ = timer {
             cancelTimer()
             
-            //waitTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
-                ////////                                                               .5                                       .4                                                                                          .5                                                      .4
                 if self.gameSpeed > self.defaultGameSpeed * self.gameSpeedLimit && self.gameSpeed < self.defaultGameSpeed / self.gameSpeedLimit {
                     
                     self.gameSpeed -= 0.1
                 }
                 self.setUpTimer()
-           // }
-            
         }
     }
     
     @IBAction func fastbackwardButtonTapped(_ sender: UIButton) {
         sender.pulsate()
         
-        if let timer = timer {
-//            timer.invalidate()
+        if let _ = timer {
             cancelTimer()
             
             if gameSpeed > defaultGameSpeed * gameSpeedLimit && gameSpeed < defaultGameSpeed / gameSpeedLimit {

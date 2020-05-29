@@ -21,7 +21,7 @@ class Grid: UIControl {
     var indexSum = 0
     var defaultColor: UIColor = UIColor(displayP3Red: 200/255, green: 200/255, blue: 255/255, alpha: 0.4)
     var cellColor: UIColor = .white
-    var liveCellColor: UIColor = .black
+    var liveCellColor: UIColor = .purple
     var liveCellColorAlpha: CGFloat = 0.1
     
     // Setup for the Grid before the screen loads
