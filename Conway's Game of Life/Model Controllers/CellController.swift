@@ -48,6 +48,14 @@ class CellController {
         cells.append(cell)
     }
     
+    // Set all cells to dead
+    func setCellsToDead() {
+        for cell in cells {
+            let id = cell.indexID
+            cells[id].state = .dead
+        }
+    }
+    
     // Get cell by Coordinates
     func getCellByCoordinates(coordinates: Coordinates) -> Cell {
         
@@ -81,22 +89,9 @@ class CellController {
     // Get coordinates for touched cell
     func getTouchedCell(for location: CGPoint) -> Cell? {
                 
-        // Find the off set of the center of the weel
-        
         let cell = getCellThatContains(cgPoint: location)
-        
-        
-        //        let gridCenter = CGPoint(x: bounds.midX, y: bounds.midY)
-        //
-        //        let dy = location.y - gridCenter.y
-        //        let dx = location.x - gridCenter.x
-        //
-        //        let offset = CGPoint(x: dx / center.x, y: dy / center.y)
-        //
-        //        return color
-        
+
         return cell
-        
     }
     
     // Set initial Pattern for Testing

@@ -56,6 +56,8 @@ class GridViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func clearButtonTapped(_ sender: UIButton) {
+        cellController.setCellsToDead()
+        grid.setNeedsDisplay()
     }
     @IBAction func pauseButtonTapped(_ sender: UIButton) {
     }
