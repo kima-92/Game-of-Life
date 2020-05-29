@@ -15,4 +15,5 @@ struct Cell {
     var state: CellState
     var neighborhoodByID: NeighborhoodCoordinates?
     var rect: CGRect
+    var alpha: CGFloat
 }

@@ -117,12 +117,8 @@ class Grid: UIControl {
                     
                     guard nextState != nil else { return }
                     
-                    // If the next state for this cell is alive,
-                    // Set color to black
-                    if nextState == .live {
-                        let lightColor = liveCellColor.withAlphaComponent(liveCellColorAlpha)
-                        cellColor = lightColor
-                    }
+                    // Change cell color based on whether it died, lived or survived
+                    changeCellColor(nextState: nextState!, cell: cell)
                     
                     // Change this cell's state
                     // If the current state of this cell is not what it should be for this generation
@@ -163,11 +159,8 @@ class Grid: UIControl {
                     
                     guard nextState != nil else { return }
                     
-                    // Set cellColor to liveColor if cell is alive
-                    if nextState == .live {
-                        let lightColor = liveCellColor.withAlphaComponent(liveCellColorAlpha)
-                        cellColor = lightColor
-                    }
+                    // Change cell color based on whether it died, lived or survived
+                    changeCellColor(nextState: nextState!, cell: cell)
                     
                     // Change this cell's state
                     // If the current state of this cell is not what it should be for this generation
@@ -206,7 +199,9 @@ class Grid: UIControl {
                     
                     // Set cellColor to liveColor if cell is alive
                     if cell.state == .live {
-                        let lightColor = liveCellColor.withAlphaComponent(liveCellColorAlpha)
+                        
+                        //cellController.sumUpCellAlpha(id: cell.indexID)
+                        let lightColor = liveCellColor.withAlphaComponent(cellController.minAlpha)
                         cellColor = lightColor
                     }
                                         
@@ -214,6 +209,33 @@ class Grid: UIControl {
                     context.fill(cellRect!)
                 }
             }
+        }
+    }
+    
+    private func changeCellColor(nextState: CellState, cell: Cell) {
+        
+        // Set cellColor to liveColor if cell is alive
+        if nextState == .live && cell.state == .live {
+            
+            cellController!.sumUpCellAlpha(id: cell.indexID)
+            let lightColor = liveCellColor.withAlphaComponent(cell.alpha)
+            cellColor = lightColor
+            
+        } else if nextState == .live  && cell.state == .dead {
+            
+            cellController!.sumUpCellAlpha(id: cell.indexID)
+            let lightColor = liveCellColor.withAlphaComponent(cell.alpha)
+            cellColor = lightColor
+            
+        } else if nextState == .dead && cell.state == .live {
+            cellController!.sumDownCellAlpha(id: cell.indexID)
+            let lightColor = liveCellColor.withAlphaComponent(cell.alpha)
+            cellColor = lightColor
+            
+        } else if nextState == .dead && cell.state == .dead {
+            //cellController.sumDownCellAlpha(id: cell.indexID)
+            //let lightColor = liveCellColor.withAlphaComponent(cell.alpha)
+            cellColor = defaultColor
         }
     }
     
@@ -240,7 +262,7 @@ class Grid: UIControl {
         // Creating a Cell and adding it to the array
         let coordinates = Coordinates(x: x, y: y)
         
-        let cell = Cell(indexID: indexID, coordinates: coordinates, state: .dead, rect: rect)
+        let cell = Cell(indexID: indexID, coordinates: coordinates, state: .dead, rect: rect, alpha: 0.4)
         
         cellController.addNewCell(cell: cell)
     }

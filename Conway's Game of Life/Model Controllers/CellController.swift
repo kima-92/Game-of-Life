@@ -14,6 +14,8 @@ class CellController {
     // MARK: - Properties
     var cells: [Cell] = []
     var cellSize: CGFloat?
+    var minAlpha: CGFloat = 0.2
+    var maxAlpha: CGFloat = 1.5
     
     var cell: Cell?
     var startedTimer: Bool = false
@@ -53,6 +55,26 @@ class CellController {
         for cell in cells {
             let id = cell.indexID
             cells[id].state = .dead
+        }
+    }
+    
+    // sum up cell alpha by one if possible
+    func sumUpCellAlpha(id: Int) {
+        
+        let alpha = cells[id].alpha
+        
+        if alpha >= minAlpha && alpha <= maxAlpha {
+            cells[id].alpha += 0.1
+        }
+    }
+    
+    // sum down the cell alpha by one if possible
+    func sumDownCellAlpha(id: Int) {
+        
+        let alpha = cells[id].alpha
+        
+        if alpha >= minAlpha && alpha <= maxAlpha {
+            cells[id].alpha -= 0.1
         }
     }
     
