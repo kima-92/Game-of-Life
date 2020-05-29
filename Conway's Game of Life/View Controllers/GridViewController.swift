@@ -16,6 +16,21 @@ class GridViewController: UIViewController {
     var timer = Timer()
     
     var cellSize: CGFloat = 40  //8
+    var shadowColor: UIColor = .black
+    var shadowSize = CGSize(width: 2.0, height: 2.0)
+    
+    var runButtons: [UIButton?] {
+        let buttons = [playButton,
+                       stopButton,
+                       pauseButton,
+                       clearButton,
+                       forwardByOneButton,
+                       backwardByOneButton,
+                       fastforwardButton,
+                       fastbackwardButton
+        ]
+        return buttons
+    }
     
     // MARK: - Outlets
     @IBOutlet weak var grid: Grid!
@@ -24,13 +39,11 @@ class GridViewController: UIViewController {
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
     
-    
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var forwardByOneButton: UIButton!
     @IBOutlet weak var backwardByOneButton: UIButton!
     @IBOutlet weak var fastforwardButton: UIButton!
     @IBOutlet weak var fastbackwardButton: UIButton!
-    
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -95,6 +108,22 @@ class GridViewController: UIViewController {
         grid.setNeedsDisplay()
     }
     
+    // Set up shadow and rounded courners for buttons
+    private func setupButtonsViews() {
+        
+        for button in runButtons {
+            
+            guard let button = button else { return }
+            
+            button.imageView?.layer.cornerRadius = 10
+            button.layer.shadowColor = shadowColor.cgColor
+            button.layer.shadowOffset = shadowSize
+            button.layer.shadowOpacity = 0.5
+            button.layer.shadowRadius = 0.0
+        }
+    }
+    
+    // MARK: - Update Views
     private func updateViews() {
         // Pass the cellController to the Grid
         grid.cellController = cellController
@@ -105,6 +134,9 @@ class GridViewController: UIViewController {
         
         // Setting the cell size
         cellSize = grid.bounds.width / 4   //40  //8
+        
+        // Set up the buttons
+        setupButtonsViews()
     }
     
 
