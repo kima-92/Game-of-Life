@@ -85,14 +85,14 @@
             <objects>
                 <viewController id="kfs-5t-3kp" customClass="GridViewController" customModule="Conway_s_Game_of_Life" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wfY-M3-Xfb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1050"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nsm-5o-qPg">
-                                <rect key="frame" x="0.0" y="88" width="414" height="978"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="928"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3w-Bf-S2j">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="978"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="928"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWR-Ut-77d" customClass="Grid" customModule="Conway_s_Game_of_Life" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="105" width="374" height="449"/>
@@ -115,7 +115,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKL-JV-ku9">
-                                                <rect key="frame" x="20" y="574" width="374" height="364"/>
+                                                <rect key="frame" x="20" y="574" width="374" height="314"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ibz-kq-6mY">
                                                         <rect key="frame" x="0.0" y="10" width="374" height="235"/>
@@ -210,7 +210,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.85422402620000004" green="0.88375622030000001" blue="0.9112673402" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="364" id="5Jp-oP-C3h"/>
+                                                    <constraint firstAttribute="height" constant="314" id="0io-t9-hJI"/>
                                                     <constraint firstItem="Ibz-kq-6mY" firstAttribute="top" secondItem="vKL-JV-ku9" secondAttribute="top" constant="10" id="K8i-Cb-BVF"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ibz-kq-6mY" secondAttribute="trailing" id="bqe-Sa-ESA"/>
                                                     <constraint firstItem="Ibz-kq-6mY" firstAttribute="leading" secondItem="vKL-JV-ku9" secondAttribute="leading" id="pzX-V4-dPW"/>
@@ -252,7 +252,7 @@
                         <viewLayoutGuide key="safeArea" id="avV-bh-60l"/>
                     </view>
                     <navigationItem key="navigationItem" id="2e3-RL-tt3"/>
-                    <size key="freeformSize" width="414" height="1100"/>
+                    <size key="freeformSize" width="414" height="1050"/>
                     <connections>
                         <outlet property="buttonsGreyView" destination="vKL-JV-ku9" id="ryg-L1-Uxc"/>
                         <outlet property="clearButton" destination="dvS-YJ-Syn" id="Ylz-AV-xnq"/>

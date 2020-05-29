@@ -127,7 +127,7 @@ class GridViewController: UIViewController {
             
                 if self.gameSpeed > self.defaultGameSpeed * self.gameSpeedLimit && self.gameSpeed < self.defaultGameSpeed / self.gameSpeedLimit {
                     
-                    self.gameSpeed -= 0.1
+                    self.gameSpeed -= 0.3
                 }
                 self.setUpTimer()
         }
@@ -139,17 +139,13 @@ class GridViewController: UIViewController {
         if let _ = timer {
             cancelTimer()
             
-            if gameSpeed > defaultGameSpeed * gameSpeedLimit && gameSpeed < defaultGameSpeed / gameSpeedLimit {
+            //if gameSpeed > defaultGameSpeed * gameSpeedLimit && gameSpeed < defaultGameSpeed / gameSpeedLimit {
                 
-                gameSpeed += 0.1
-            }
+                gameSpeed += 0.3
+            //}
             setUpTimer()
         }
     }
-    
-    
-    
-    
     
     // MARK: - Methods
     
