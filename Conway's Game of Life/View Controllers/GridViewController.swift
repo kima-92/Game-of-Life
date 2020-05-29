@@ -20,6 +20,18 @@ class GridViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var grid: Grid!
     
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    
+    
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var forwardByOneButton: UIButton!
+    @IBOutlet weak var backwardByOneButton: UIButton!
+    @IBOutlet weak var fastforwardButton: UIButton!
+    @IBOutlet weak var fastbackwardButton: UIButton!
+    
+    
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
