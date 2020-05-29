@@ -28,6 +28,21 @@ class GridViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    @IBAction func clearButtonTapped(_ sender: UIButton) {
+    }
+    @IBAction func pauseButtonTapped(_ sender: UIButton) {
+    }
+    @IBAction func fastforwardButtonTapped(_ sender: UIButton) {
+    }
+    @IBAction func fastbackwardButtonTapped(_ sender: UIButton) {
+    }
+    
+    @IBAction func backByOneButtonTapped(_ sender: UIButton) {
+    }
+    
+    
+    
     @IBAction func gridTapped(_ sender: Grid) {
         grid.setNeedsDisplay()
     }
@@ -39,18 +54,18 @@ class GridViewController: UIViewController {
     }
     
     // User stated the timer
-    @IBAction func startTimerButtonTapped(_ sender: UIButton) {
+    @IBAction func playButtonTapped(_ sender: UIButton) {
         setUpTimer()
     }
     
     // Re-draws the grid Once
-    @IBAction func runOnceButtonTapped(_ sender: UIButton) {
+    @IBAction func forwardByOneButtonTapped(_ sender: UIButton) {
         cellController.setShouldGameRunOnce(to: true)
         self.grid.setNeedsDisplay()
     }
     
     // Stop the timer
-    @IBAction func stopTimerButtonTapped(_ sender: UIButton) {
+    @IBAction func stopButtonTapped(_ sender: UIButton) {
         cellController.setDidStartGame(to: false)
         timer.invalidate()
     }
