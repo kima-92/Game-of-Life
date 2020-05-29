@@ -14,6 +14,8 @@ class CellController {
     // MARK: - Properties
     var cells: [Cell] = []
     var cellSize: CGFloat?
+    var minAlpha: CGFloat = 0.2
+    var maxAlpha: CGFloat = 1.5
     
     var cell: Cell?
     var startedTimer: Bool = false
@@ -46,6 +48,34 @@ class CellController {
         // When this funciton is called, this cell has NO neighborhood yet!
 
         cells.append(cell)
+    }
+    
+    // Set all cells to dead
+    func setCellsToDead() {
+        for cell in cells {
+            let id = cell.indexID
+            cells[id].state = .dead
+        }
+    }
+    
+    // sum up cell alpha by one if possible
+    func sumUpCellAlpha(id: Int) {
+        
+        let alpha = cells[id].alpha
+        
+        if alpha >= minAlpha && alpha <= maxAlpha {
+            cells[id].alpha += 0.1
+        }
+    }
+    
+    // sum down the cell alpha by one if possible
+    func sumDownCellAlpha(id: Int) {
+        
+        let alpha = cells[id].alpha
+        
+        if alpha >= minAlpha && alpha <= maxAlpha {
+            cells[id].alpha -= 0.1
+        }
     }
     
     // Get cell by Coordinates
@@ -81,137 +111,16 @@ class CellController {
     // Get coordinates for touched cell
     func getTouchedCell(for location: CGPoint) -> Cell? {
                 
-        // Find the off set of the center of the weel
-        
         let cell = getCellThatContains(cgPoint: location)
-        
-        
-        //        let gridCenter = CGPoint(x: bounds.midX, y: bounds.midY)
-        //
-        //        let dy = location.y - gridCenter.y
-        //        let dx = location.x - gridCenter.x
-        //
-        //        let offset = CGPoint(x: dx / center.x, y: dy / center.y)
-        //
-        //        return color
-        
+
         return cell
-        
     }
     
-    // Set initial Pattern for Testing
-    func setInitialPattern() {
-        guard !cells.isEmpty else { return }
+    func getAPattern() -> [Int] {
+        let liveCells = cells.filter({ $0.state == .live })
+        let ids = liveCells.compactMap({ $0.indexID })
+        return ids
         
-        // 1
-        
-        let cellIndex = 0 //1_000
-        
-        let myCell = cells[cellIndex]
-        
-        cells[cellIndex].state = .live
-        
-        let cellNeighborhood = getNeighborhoodFor(cell: myCell)
-        
-        let topID = cellNeighborhood?.top
-        let bottomID = cellNeighborhood?.bottom
-        let leftID = cellNeighborhood?.left
-        let rightID = cellNeighborhood?.right
-        
-        if let topID = topID {
-            
-            cells[topID].state = .live
-        }
-        
-        if let bottomID = bottomID {
-            
-            cells[bottomID].state = .live
-        }
-        
-        if let leftID = leftID {
-            
-            cells[leftID].state = .live
-        }
-        
-        if let rightID = rightID {
-            
-            cells[rightID].state = .live
-        }
-        
-        
-        
-        
-        // 2
-        
-        let secondCellIndex = 2 //1_000
-        
-        let mySecondCell = cells[secondCellIndex]
-        
-        cells[secondCellIndex].state = .live
-        
-        let secondCellNeighborhood = getNeighborhoodFor(cell: mySecondCell)
-        
-        let topID2 = secondCellNeighborhood?.top
-        let bottomID2 = secondCellNeighborhood?.bottom
-        let leftID2 = secondCellNeighborhood?.left
-        let rightID2 = secondCellNeighborhood?.right
-        
-        if let topID2 = topID2 {
-            
-            cells[topID2].state = .live
-        }
-        
-        if let bottomID2 = bottomID2 {
-            
-            cells[bottomID2].state = .live
-        }
-        
-        if let leftID2 = leftID2 {
-            
-            cells[leftID2].state = .live
-        }
-        
-        if let rightID2 = rightID2 {
-            
-            cells[rightID2].state = .live
-        }
-        
-        
-        
-        // 3
-        
-        let thirdCellIndex = 3 //1_000
-        
-        let myThirdCell = cells[thirdCellIndex]
-        
-        cells[thirdCellIndex].state = .live
-        
-        let thirdCellNeighborhood = getNeighborhoodFor(cell: myThirdCell)
-        
-        let topID3 = thirdCellNeighborhood?.top
-        let bottomID3 = thirdCellNeighborhood?.bottom
-        let leftID3 = thirdCellNeighborhood?.left
-        let rightID3 = thirdCellNeighborhood?.right
-        
-        if let topID3 = topID3 {
-            
-            cells[topID3].state = .live
-        }
-        
-        if let bottomID3 = bottomID3 {
-            
-            cells[bottomID3].state = .live
-        }
-        
-        if let leftID3 = leftID3 {
-            
-            cells[leftID3].state = .live
-        }
-        
-        if let rightID3 = rightID3 {
-            
-            cells[rightID3].state = .live
-        }
     }
     
     // Fetch the neighborhood of One cell
@@ -350,5 +259,34 @@ class CellController {
         case .live:
             cells[id].state = .dead
         }
+    }
+    
+    // Set a random Pattern of cells to live
+    func setARandomPatternToLive() {
+        
+        guard !cells.isEmpty else { return }
+        
+        // Set all cells to dead
+        setCellsToDead()
+        
+        // Set a pattern
+        let patternByIDs = makeList(cells.count / 2)
+        
+        var pattern: [Cell] = []
+        
+        // append pattern cells to pattern array
+        for i in patternByIDs {
+            pattern.append(cells[i])
+        }
+        
+        // Change the state of each cell in the pattern to live
+        for cell in pattern {
+            cells[cell.indexID].state = .live
+        }
+    }
+    
+    // Make an array of random numbers
+    func makeList(_ n: Int) -> [Int] {
+        return (1..<n).map { _ in .random(in: 1...cells.count - 1) }
     }
 }
