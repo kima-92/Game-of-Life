@@ -16,71 +16,108 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWR-Ut-77d" customClass="Grid" customModule="Conway_s_Game_of_Life" customModuleProvider="target">
-                                <rect key="frame" x="20" y="94" width="374" height="374"/>
+                                <rect key="frame" x="20" y="94" width="374" height="486"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="FWR-Ut-77d" secondAttribute="height" multiplier="1:1" id="KKQ-tK-u06"/>
+                                    <constraint firstAttribute="width" secondItem="FWR-Ut-77d" secondAttribute="height" multiplier="1:1.3" id="KKQ-tK-u06"/>
                                 </constraints>
                                 <connections>
                                     <action selector="gridTapped:" destination="BaM-5D-goS" eventType="valueChanged" id="VgA-6N-10X"/>
                                 </connections>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AqA-M0-33J">
-                                <rect key="frame" x="30" y="488" width="354" height="210"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="C2J-AM-niV">
+                                <rect key="frame" x="20" y="677" width="245" height="50"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SyA-Ee-AqY">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="96"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWw-zf-Mn6">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="48"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="Run Once"/>
-                                                <connections>
-                                                    <action selector="runOnceButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="oeW-Gb-vNP"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaF-zE-I6A">
-                                                <rect key="frame" x="0.0" y="48" width="354" height="48"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="Set Pattern"/>
-                                                <connections>
-                                                    <action selector="setPatternButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="SuS-Ja-Net"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="OB7-FL-Feu">
-                                        <rect key="frame" x="0.0" y="111" width="354" height="99"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvP-z7-9dJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="48"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="Start Timer!"/>
-                                                <connections>
-                                                    <action selector="startTimerButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="QC7-RV-kTi"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fo-H5-dvM">
-                                                <rect key="frame" x="0.0" y="51" width="354" height="48"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="Stop Timer!"/>
-                                                <connections>
-                                                    <action selector="stopTimerButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="RsJ-qf-rlm"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fo-H5-dvM">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="1zA-xg-7dR"/>
+                                            <constraint firstAttribute="width" secondItem="5fo-H5-dvM" secondAttribute="height" multiplier="1.5:1" id="jXi-0a-SLe"/>
+                                        </constraints>
+                                        <state key="normal" title="Stop Timer!" image="stop"/>
+                                        <connections>
+                                            <action selector="stopTimerButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="RsJ-qf-rlm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWw-zf-Mn6">
+                                        <rect key="frame" x="85" y="0.0" width="75" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="TWw-zf-Mn6" secondAttribute="height" multiplier="1.5:1" id="Q0l-Pc-g1b"/>
+                                            <constraint firstAttribute="height" constant="50" id="baZ-1y-6vx"/>
+                                        </constraints>
+                                        <state key="normal" title="Run Once" image="forwardByOne"/>
+                                        <connections>
+                                            <action selector="runOnceButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="oeW-Gb-vNP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvP-z7-9dJ">
+                                        <rect key="frame" x="170" y="0.0" width="75" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="FvP-z7-9dJ" secondAttribute="height" multiplier="1.5:1" id="5z8-36-u8U"/>
+                                            <constraint firstAttribute="height" constant="50" id="cbD-6v-s7t"/>
+                                        </constraints>
+                                        <state key="normal" title="Start Timer!" image="play"/>
+                                        <connections>
+                                            <action selector="startTimerButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="QC7-RV-kTi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GUO-hn-Lb3">
+                                <rect key="frame" x="20" y="772" width="395" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r90-4m-DHD">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="9eg-gg-Ko3"/>
+                                            <constraint firstAttribute="width" secondItem="r90-4m-DHD" secondAttribute="height" multiplier="1.5:1" id="MsX-BO-ngp"/>
+                                        </constraints>
+                                        <state key="normal" title="Back By one" image="backwardByOne"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhg-4k-Snh">
+                                        <rect key="frame" x="80" y="0.0" width="75" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RDK-ZX-4m9"/>
+                                            <constraint firstAttribute="width" secondItem="dhg-4k-Snh" secondAttribute="height" multiplier="1.5:1" id="weZ-rj-WKD"/>
+                                        </constraints>
+                                        <state key="normal" title="backtrack" image="fastbackward"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYY-Cv-kr4">
+                                        <rect key="frame" x="160" y="0.0" width="75" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="rYY-Cv-kr4" secondAttribute="height" multiplier="1.5:1" id="VOU-XG-hGK"/>
+                                            <constraint firstAttribute="height" constant="50" id="VmZ-JQ-E5O"/>
+                                        </constraints>
+                                        <state key="normal" title="fastforward" image="fastforward"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR0-M2-dRd">
+                                        <rect key="frame" x="240" y="0.0" width="75" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fR0-M2-dRd" secondAttribute="height" multiplier="1.5:1" id="Kaj-39-gOb"/>
+                                            <constraint firstAttribute="height" constant="50" id="Z9I-UE-ozq"/>
+                                        </constraints>
+                                        <state key="normal" title="pause" image="pause"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvS-YJ-Syn">
+                                        <rect key="frame" x="320" y="0.0" width="75" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="2yB-hr-q3p"/>
+                                            <constraint firstAttribute="width" secondItem="dvS-YJ-Syn" secondAttribute="height" multiplier="1.5:1" id="7jR-gw-uNT"/>
+                                        </constraints>
+                                        <state key="normal" title="clear" image="clear"/>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="FWR-Ut-77d" firstAttribute="top" secondItem="1z7-QE-TCN" secondAttribute="top" constant="50" id="0oH-35-RBB"/>
+                            <constraint firstItem="1z7-QE-TCN" firstAttribute="bottom" secondItem="GUO-hn-Lb3" secondAttribute="bottom" constant="40" id="2yH-PV-dPc"/>
                             <constraint firstItem="FWR-Ut-77d" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="20" id="HhV-xe-mgJ"/>
-                            <constraint firstItem="AqA-M0-33J" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="30" id="XGS-1C-7i9"/>
-                            <constraint firstItem="1z7-QE-TCN" firstAttribute="trailing" secondItem="AqA-M0-33J" secondAttribute="trailing" constant="30" id="f8M-nL-4DX"/>
+                            <constraint firstItem="GUO-hn-Lb3" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="20" id="Ley-X1-qfs"/>
+                            <constraint firstItem="C2J-AM-niV" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="20" id="RAE-OA-HwA"/>
+                            <constraint firstItem="1z7-QE-TCN" firstAttribute="bottom" secondItem="C2J-AM-niV" secondAttribute="bottom" constant="135" id="TaJ-xT-7VB"/>
                             <constraint firstItem="1z7-QE-TCN" firstAttribute="trailing" secondItem="FWR-Ut-77d" secondAttribute="trailing" constant="20" id="f8z-l5-Gef"/>
-                            <constraint firstItem="AqA-M0-33J" firstAttribute="top" secondItem="FWR-Ut-77d" secondAttribute="bottom" constant="20" id="yAw-HJ-KJf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1z7-QE-TCN"/>
                     </view>
@@ -93,4 +130,14 @@
             <point key="canvasLocation" x="68" y="87"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backwardByOne" width="1800" height="1200"/>
+        <image name="clear" width="1800" height="1200"/>
+        <image name="fastbackward" width="1800" height="1200"/>
+        <image name="fastforward" width="1800" height="1200"/>
+        <image name="forwardByOne" width="1800" height="1200"/>
+        <image name="pause" width="1800" height="1200"/>
+        <image name="play" width="1800" height="1200"/>
+        <image name="stop" width="1800" height="1200"/>
+    </resources>
 </document>
