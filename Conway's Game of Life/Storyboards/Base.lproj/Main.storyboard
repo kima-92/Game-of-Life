@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BaM-5D-goS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kfs-5t-3kp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -8,149 +8,214 @@
     </dependencies>
     <scenes>
         <!--Grid View Controller-->
-        <scene sceneID="fWA-aY-Gtp">
+        <scene sceneID="e4S-Ac-kjy">
             <objects>
-                <viewController id="BaM-5D-goS" customClass="GridViewController" customModule="Conway_s_Game_of_Life" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="s0Q-Nx-iV8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <viewController id="kfs-5t-3kp" customClass="GridViewController" customModule="Conway_s_Game_of_Life" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wfY-M3-Xfb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWR-Ut-77d" customClass="Grid" customModule="Conway_s_Game_of_Life" customModuleProvider="target">
-                                <rect key="frame" x="20" y="94" width="374" height="486"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nsm-5o-qPg">
+                                <rect key="frame" x="0.0" y="44" width="414" height="922"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3w-Bf-S2j">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="824"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWR-Ut-77d" customClass="Grid" customModule="Conway_s_Game_of_Life" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="105" width="374" height="449"/>
+                                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="FWR-Ut-77d" secondAttribute="height" multiplier="1:1.2" id="KKQ-tK-u06"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="gridTapped:" destination="kfs-5t-3kp" eventType="valueChanged" id="zhU-LZ-bV2"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the Grid to bring cells to live!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5s-H0-au9">
+                                                <rect key="frame" x="20" y="20" width="374" height="60"/>
+                                                <color key="backgroundColor" red="0.85490196078431369" green="0.88235294117647056" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="WXk-Yv-1UT"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="TamilSangamMN-Bold" family="Tamil Sangam MN" pointSize="25"/>
+                                                <color key="textColor" red="0.33909130100000001" green="0.082923926410000001" blue="0.44503736500000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKL-JV-ku9">
+                                                <rect key="frame" x="20" y="574" width="374" height="230"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ibz-kq-6mY">
+                                                        <rect key="frame" x="0.0" y="10" width="374" height="210"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="C2J-AM-niV">
+                                                                <rect key="frame" x="134.5" y="0.0" width="105" height="70"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvP-z7-9dJ">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="105" height="70"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="FvP-z7-9dJ" secondAttribute="height" multiplier="1.5:1" id="5z8-36-u8U"/>
+                                                                            <constraint firstAttribute="height" constant="70" id="cbD-6v-s7t"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Start Timer!" image="play"/>
+                                                                        <connections>
+                                                                            <action selector="playButtonTapped:" destination="kfs-5t-3kp" eventType="touchUpInside" id="uAo-w1-jiZ"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lTa-lZ-zch">
+                                                                <rect key="frame" x="54.5" y="90" width="265" height="50"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fo-H5-dvM">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="50"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="5fo-H5-dvM" secondAttribute="height" multiplier="1.5:1" id="jXi-0a-SLe"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Stop Timer!" image="stop"/>
+                                                                        <connections>
+                                                                            <action selector="stopButtonTapped:" destination="kfs-5t-3kp" eventType="touchUpInside" id="U5n-xR-ayf"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR0-M2-dRd">
+                                                                        <rect key="frame" x="95" y="0.0" width="75" height="50"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="fR0-M2-dRd" secondAttribute="height" multiplier="1.5:1" id="Kaj-39-gOb"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="pause" image="pause"/>
+                                                                        <connections>
+                                                                            <action selector="pauseButtonTapped:" destination="kfs-5t-3kp" eventType="touchUpInside" id="pjV-cR-pK3"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvS-YJ-Syn">
+                                                                        <rect key="frame" x="190" y="0.0" width="75" height="50"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="50" id="2yB-hr-q3p"/>
+                                                                            <constraint firstAttribute="width" secondItem="dvS-YJ-Syn" secondAttribute="height" multiplier="1.5:1" id="7jR-gw-uNT"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="clear" image="clear"/>
+                                                                        <connections>
+                                                                            <action selector="clearButtonTapped:" destination="kfs-5t-3kp" eventType="touchUpInside" id="acp-2f-bYn"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="5fo-H5-dvM" firstAttribute="height" secondItem="fR0-M2-dRd" secondAttribute="height" id="JgI-k2-p0m"/>
+                                                                    <constraint firstItem="fR0-M2-dRd" firstAttribute="height" secondItem="dvS-YJ-Syn" secondAttribute="height" id="rdS-Tl-3ra"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GUO-hn-Lb3">
+                                                                <rect key="frame" x="22" y="160" width="330" height="50"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhg-4k-Snh">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="50"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="50" id="RDK-ZX-4m9"/>
+                                                                            <constraint firstAttribute="width" secondItem="dhg-4k-Snh" secondAttribute="height" multiplier="1.5:1" id="weZ-rj-WKD"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="backtrack" image="fastbackward"/>
+                                                                        <connections>
+                                                                            <action selector="fastbackwardButtonTapped:" destination="kfs-5t-3kp" eventType="touchUpInside" id="b87-rN-83R"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r90-4m-DHD">
+                                                                        <rect key="frame" x="85" y="0.0" width="75" height="50"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="50" id="9eg-gg-Ko3"/>
+                                                                            <constraint firstAttribute="width" secondItem="r90-4m-DHD" secondAttribute="height" multiplier="1.5:1" id="MsX-BO-ngp"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Back By one" image="backwardByOne"/>
+                                                                        <connections>
+                                                                            <action selector="backByOneButtonTapped:" destination="kfs-5t-3kp" eventType="touchUpInside" id="Itu-uD-3Qr"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWw-zf-Mn6">
+                                                                        <rect key="frame" x="170" y="0.0" width="75" height="50"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="TWw-zf-Mn6" secondAttribute="height" multiplier="1.5:1" id="Q0l-Pc-g1b"/>
+                                                                            <constraint firstAttribute="height" constant="50" id="baZ-1y-6vx"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Run Once" image="forwardByOne"/>
+                                                                        <connections>
+                                                                            <action selector="forwardByOneButtonTapped:" destination="kfs-5t-3kp" eventType="touchUpInside" id="bo5-mr-1So"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYY-Cv-kr4">
+                                                                        <rect key="frame" x="255" y="0.0" width="75" height="50"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="rYY-Cv-kr4" secondAttribute="height" multiplier="1.5:1" id="VOU-XG-hGK"/>
+                                                                            <constraint firstAttribute="height" constant="50" id="VmZ-JQ-E5O"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="fastforward" image="fastforward"/>
+                                                                        <connections>
+                                                                            <action selector="fastforwardButtonTapped:" destination="kfs-5t-3kp" eventType="touchUpInside" id="yLG-VP-pUy"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.85422402620000004" green="0.88375622030000001" blue="0.9112673402" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="Ibz-kq-6mY" firstAttribute="top" secondItem="vKL-JV-ku9" secondAttribute="top" constant="10" id="K8i-Cb-BVF"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Ibz-kq-6mY" secondAttribute="trailing" id="bqe-Sa-ESA"/>
+                                                    <constraint firstItem="Ibz-kq-6mY" firstAttribute="leading" secondItem="vKL-JV-ku9" secondAttribute="leading" id="pzX-V4-dPW"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Ibz-kq-6mY" secondAttribute="bottom" constant="10" id="uoX-WJ-nsh"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="vKL-JV-ku9" firstAttribute="top" secondItem="FWR-Ut-77d" secondAttribute="bottom" constant="20" id="3ct-eK-ens"/>
+                                            <constraint firstItem="FWR-Ut-77d" firstAttribute="leading" secondItem="B3w-Bf-S2j" secondAttribute="leading" constant="20" id="4gF-c9-YH7"/>
+                                            <constraint firstItem="vKL-JV-ku9" firstAttribute="leading" secondItem="B3w-Bf-S2j" secondAttribute="leading" constant="20" id="IRi-vS-HZ3"/>
+                                            <constraint firstItem="h5s-H0-au9" firstAttribute="leading" secondItem="B3w-Bf-S2j" secondAttribute="leading" constant="20" id="UDg-4r-Qo1"/>
+                                            <constraint firstItem="h5s-H0-au9" firstAttribute="top" secondItem="B3w-Bf-S2j" secondAttribute="top" constant="20" id="bBM-Bp-j7x"/>
+                                            <constraint firstAttribute="trailing" secondItem="FWR-Ut-77d" secondAttribute="trailing" constant="20" id="fSV-xn-xef"/>
+                                            <constraint firstItem="FWR-Ut-77d" firstAttribute="top" secondItem="h5s-H0-au9" secondAttribute="bottom" constant="25" id="jLm-uM-Lcl"/>
+                                            <constraint firstAttribute="trailing" secondItem="h5s-H0-au9" secondAttribute="trailing" constant="20" id="oRa-6T-Mj5"/>
+                                            <constraint firstAttribute="bottom" secondItem="vKL-JV-ku9" secondAttribute="bottom" constant="20" id="ps9-pl-oH2"/>
+                                            <constraint firstAttribute="trailing" secondItem="vKL-JV-ku9" secondAttribute="trailing" constant="20" id="rpf-yf-Joe"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="FWR-Ut-77d" secondAttribute="height" multiplier="1:1.3" id="KKQ-tK-u06"/>
+                                    <constraint firstItem="B3w-Bf-S2j" firstAttribute="top" secondItem="Nsm-5o-qPg" secondAttribute="top" id="54I-qv-6Le"/>
+                                    <constraint firstItem="B3w-Bf-S2j" firstAttribute="leading" secondItem="Nsm-5o-qPg" secondAttribute="leading" id="BJ3-Mp-hWE"/>
+                                    <constraint firstItem="B3w-Bf-S2j" firstAttribute="height" secondItem="Nsm-5o-qPg" secondAttribute="height" priority="250" id="CX8-of-7zY"/>
+                                    <constraint firstAttribute="bottom" secondItem="B3w-Bf-S2j" secondAttribute="bottom" id="GOh-4w-otc"/>
+                                    <constraint firstItem="B3w-Bf-S2j" firstAttribute="width" secondItem="Nsm-5o-qPg" secondAttribute="width" id="Xsv-D4-rup"/>
+                                    <constraint firstAttribute="trailing" secondItem="B3w-Bf-S2j" secondAttribute="trailing" id="YNv-Mn-ydi"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="gridTapped:" destination="BaM-5D-goS" eventType="valueChanged" id="VgA-6N-10X"/>
-                                </connections>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="C2J-AM-niV">
-                                <rect key="frame" x="20" y="677" width="245" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fo-H5-dvM">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="1zA-xg-7dR"/>
-                                            <constraint firstAttribute="width" secondItem="5fo-H5-dvM" secondAttribute="height" multiplier="1.5:1" id="jXi-0a-SLe"/>
-                                        </constraints>
-                                        <state key="normal" title="Stop Timer!" image="stop"/>
-                                        <connections>
-                                            <action selector="stopButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="6On-C5-sve"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvP-z7-9dJ">
-                                        <rect key="frame" x="85" y="0.0" width="75" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="FvP-z7-9dJ" secondAttribute="height" multiplier="1.5:1" id="5z8-36-u8U"/>
-                                            <constraint firstAttribute="height" constant="50" id="cbD-6v-s7t"/>
-                                        </constraints>
-                                        <state key="normal" title="Start Timer!" image="play"/>
-                                        <connections>
-                                            <action selector="playButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="WSU-eU-30s"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR0-M2-dRd">
-                                        <rect key="frame" x="170" y="0.0" width="75" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="fR0-M2-dRd" secondAttribute="height" multiplier="1.5:1" id="Kaj-39-gOb"/>
-                                            <constraint firstAttribute="height" constant="50" id="Z9I-UE-ozq"/>
-                                        </constraints>
-                                        <state key="normal" title="pause" image="pause"/>
-                                        <connections>
-                                            <action selector="pauseButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="uGf-UN-ZQe"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GUO-hn-Lb3">
-                                <rect key="frame" x="20" y="772" width="395" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhg-4k-Snh">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="RDK-ZX-4m9"/>
-                                            <constraint firstAttribute="width" secondItem="dhg-4k-Snh" secondAttribute="height" multiplier="1.5:1" id="weZ-rj-WKD"/>
-                                        </constraints>
-                                        <state key="normal" title="backtrack" image="fastbackward"/>
-                                        <connections>
-                                            <action selector="fastbackwardButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="BUN-8I-HUy"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r90-4m-DHD">
-                                        <rect key="frame" x="80" y="0.0" width="75" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="9eg-gg-Ko3"/>
-                                            <constraint firstAttribute="width" secondItem="r90-4m-DHD" secondAttribute="height" multiplier="1.5:1" id="MsX-BO-ngp"/>
-                                        </constraints>
-                                        <state key="normal" title="Back By one" image="backwardByOne"/>
-                                        <connections>
-                                            <action selector="backByOneButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="hIh-c3-hNM"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvS-YJ-Syn">
-                                        <rect key="frame" x="160" y="0.0" width="75" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="2yB-hr-q3p"/>
-                                            <constraint firstAttribute="width" secondItem="dvS-YJ-Syn" secondAttribute="height" multiplier="1.5:1" id="7jR-gw-uNT"/>
-                                        </constraints>
-                                        <state key="normal" title="clear" image="clear"/>
-                                        <connections>
-                                            <action selector="clearButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="jgv-c8-cwr"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWw-zf-Mn6">
-                                        <rect key="frame" x="240" y="0.0" width="75" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="TWw-zf-Mn6" secondAttribute="height" multiplier="1.5:1" id="Q0l-Pc-g1b"/>
-                                            <constraint firstAttribute="height" constant="50" id="baZ-1y-6vx"/>
-                                        </constraints>
-                                        <state key="normal" title="Run Once" image="forwardByOne"/>
-                                        <connections>
-                                            <action selector="forwardByOneButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="e4Q-dk-2Fn"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYY-Cv-kr4">
-                                        <rect key="frame" x="320" y="0.0" width="75" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="rYY-Cv-kr4" secondAttribute="height" multiplier="1.5:1" id="VOU-XG-hGK"/>
-                                            <constraint firstAttribute="height" constant="50" id="VmZ-JQ-E5O"/>
-                                        </constraints>
-                                        <state key="normal" title="fastforward" image="fastforward"/>
-                                        <connections>
-                                            <action selector="fastforwardButtonTapped:" destination="BaM-5D-goS" eventType="touchUpInside" id="KB7-e8-cP6"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="FWR-Ut-77d" firstAttribute="top" secondItem="1z7-QE-TCN" secondAttribute="top" constant="50" id="0oH-35-RBB"/>
-                            <constraint firstItem="1z7-QE-TCN" firstAttribute="bottom" secondItem="GUO-hn-Lb3" secondAttribute="bottom" constant="40" id="2yH-PV-dPc"/>
-                            <constraint firstItem="FWR-Ut-77d" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="20" id="HhV-xe-mgJ"/>
-                            <constraint firstItem="GUO-hn-Lb3" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="20" id="Ley-X1-qfs"/>
-                            <constraint firstItem="C2J-AM-niV" firstAttribute="leading" secondItem="1z7-QE-TCN" secondAttribute="leading" constant="20" id="RAE-OA-HwA"/>
-                            <constraint firstItem="1z7-QE-TCN" firstAttribute="bottom" secondItem="C2J-AM-niV" secondAttribute="bottom" constant="135" id="TaJ-xT-7VB"/>
-                            <constraint firstItem="1z7-QE-TCN" firstAttribute="trailing" secondItem="FWR-Ut-77d" secondAttribute="trailing" constant="20" id="f8z-l5-Gef"/>
+                            <constraint firstItem="Nsm-5o-qPg" firstAttribute="trailing" secondItem="avV-bh-60l" secondAttribute="trailing" id="04v-Jm-se6"/>
+                            <constraint firstItem="Nsm-5o-qPg" firstAttribute="top" secondItem="avV-bh-60l" secondAttribute="top" id="FOs-fR-qgX"/>
+                            <constraint firstItem="Nsm-5o-qPg" firstAttribute="bottom" secondItem="avV-bh-60l" secondAttribute="bottom" id="OlQ-Nd-ThV"/>
+                            <constraint firstItem="Nsm-5o-qPg" firstAttribute="leading" secondItem="avV-bh-60l" secondAttribute="leading" id="uMw-bg-kop"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="1z7-QE-TCN"/>
+                        <viewLayoutGuide key="safeArea" id="avV-bh-60l"/>
                     </view>
+                    <size key="freeformSize" width="414" height="1000"/>
                     <connections>
-                        <outlet property="backwardByOneButton" destination="r90-4m-DHD" id="77D-wZ-Bex"/>
-                        <outlet property="clearButton" destination="dvS-YJ-Syn" id="M3Z-yQ-2CA"/>
-                        <outlet property="fastbackwardButton" destination="dhg-4k-Snh" id="fGN-EE-OnH"/>
-                        <outlet property="fastforwardButton" destination="rYY-Cv-kr4" id="csh-Iy-M8C"/>
-                        <outlet property="forwardByOneButton" destination="TWw-zf-Mn6" id="D7t-nh-FC0"/>
-                        <outlet property="grid" destination="FWR-Ut-77d" id="y6r-IZ-kiA"/>
-                        <outlet property="pauseButton" destination="fR0-M2-dRd" id="JUW-ma-eeD"/>
-                        <outlet property="playButton" destination="FvP-z7-9dJ" id="F0a-CK-gJc"/>
-                        <outlet property="stopButton" destination="5fo-H5-dvM" id="3mT-Wz-IYt"/>
+                        <outlet property="backwardByOneButton" destination="r90-4m-DHD" id="1nG-ZW-GYE"/>
+                        <outlet property="buttonsGreyView" destination="vKL-JV-ku9" id="ryg-L1-Uxc"/>
+                        <outlet property="clearButton" destination="dvS-YJ-Syn" id="Ylz-AV-xnq"/>
+                        <outlet property="fastbackwardButton" destination="dhg-4k-Snh" id="Okg-y6-hYZ"/>
+                        <outlet property="fastforwardButton" destination="rYY-Cv-kr4" id="jdU-eR-VbI"/>
+                        <outlet property="forwardByOneButton" destination="TWw-zf-Mn6" id="x8P-Jh-bt3"/>
+                        <outlet property="grid" destination="FWR-Ut-77d" id="2RS-H1-QYF"/>
+                        <outlet property="pauseButton" destination="fR0-M2-dRd" id="Rs8-th-cfK"/>
+                        <outlet property="playButton" destination="FvP-z7-9dJ" id="9ZF-xH-bYw"/>
+                        <outlet property="stopButton" destination="5fo-H5-dvM" id="kJ9-Cd-Jkd"/>
+                        <outlet property="tapOnCellsLabel" destination="h5s-H0-au9" id="Lmi-Ag-WbT"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4jN-hL-7O8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YTW-87-IbZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="68" y="87"/>
+            <point key="canvasLocation" x="1005.7971014492755" y="85.714285714285708"/>
         </scene>
     </scenes>
     <resources>

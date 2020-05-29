@@ -17,7 +17,6 @@ class GridViewController: UIViewController {
     
     var cellSize: CGFloat = 40  //8
     var shadowColor: UIColor = .black
-    var shadowSize = CGSize(width: 2.0, height: 2.0)
     
     var runButtons: [UIButton?] {
         let buttons = [playButton,
@@ -34,6 +33,8 @@ class GridViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var grid: Grid!
+    @IBOutlet weak var tapOnCellsLabel: UILabel!
+    @IBOutlet weak var buttonsGreyView: UIView!
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
@@ -115,10 +116,10 @@ class GridViewController: UIViewController {
             
             guard let button = button else { return }
             
-            button.imageView?.layer.cornerRadius = 10
+            button.imageView?.layer.cornerRadius = 15
             button.layer.shadowColor = shadowColor.cgColor
-            button.layer.shadowOffset = shadowSize
-            button.layer.shadowOpacity = 0.5
+            button.layer.shadowOffset = CGSize(width: 3.0, height: 4.0)
+            button.layer.shadowOpacity = 0.4
             button.layer.shadowRadius = 0.0
         }
     }
@@ -137,6 +138,9 @@ class GridViewController: UIViewController {
         
         // Set up the buttons
         setupButtonsViews()
+        
+        tapOnCellsLabel.layer.cornerRadius = 15
+        buttonsGreyView.layer.cornerRadius = 15
     }
     
 

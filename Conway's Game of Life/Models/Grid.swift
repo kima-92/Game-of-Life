@@ -19,7 +19,7 @@ class Grid: UIControl {
     var coordinates: Coordinates?
     
     var indexSum = 0
-    var defaultColor: UIColor = .systemPink
+    var defaultColor: UIColor = UIColor(displayP3Red: 130/255, green: 130/255, blue: 180/255, alpha: 0.4)
     var cellColor: UIColor = .white
     var liveCellColor: UIColor = .black
     
@@ -213,6 +213,7 @@ class Grid: UIControl {
         }
     }
     
+    // MARK: - Set Up Grid
     private func setUpGrid() {
         
         // Accept user interaction
@@ -224,8 +225,7 @@ class Grid: UIControl {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
         
-        // TODO: - Decide if you want rounded courners or not
-        //layer.cornerRadius = bounds.width / 2
+        layer.cornerRadius = 10  // bounds.width / 2
     }
     
     // Create a new cell to add to cellController.cells
