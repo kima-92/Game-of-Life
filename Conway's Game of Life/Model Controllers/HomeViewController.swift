@@ -21,6 +21,12 @@ class HomeViewController: UIViewController {
         updateViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     // MARK: - Actions
     
     @IBAction func startGameButtonTapped(_ sender: UIButton) {
@@ -30,8 +36,6 @@ class HomeViewController: UIViewController {
     private func updateViews() {
         welcomeLabelGreyView.layer.cornerRadius = 10
         startGameButton.layer.cornerRadius = 10
-        
-        navigationController?.navigationBar.isHidden = true
     }
     
     /*

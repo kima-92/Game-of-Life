@@ -21,7 +21,6 @@ class GridViewController: UIViewController {
     var runButtons: [UIButton?] {
         let buttons = [playButton,
                        stopButton,
-                       pauseButton,
                        clearButton,
                        forwardByOneButton,
                        backwardByOneButton,
@@ -65,12 +64,7 @@ class GridViewController: UIViewController {
         cellController.setCellsToDead()
         grid.setNeedsDisplay()
     }
-    @IBAction func pauseButtonTapped(_ sender: UIButton) {
-        sender.pulsate()
-        
-        cellController.setDidStartGame(to: false)
-        timer.invalidate()
-    }
+    
     @IBAction func fastforwardButtonTapped(_ sender: UIButton) {
         sender.pulsate()
         
@@ -89,10 +83,12 @@ class GridViewController: UIViewController {
     @IBAction func playButtonTapped(_ sender: UIButton) {
         sender.pulsate()
         
+        //Play
         if cellController.startedTimer == false {
             playButton.setImage(UIImage(named: "pause"), for: .normal)
             setUpTimer()
-            
+        
+        //Pause
         } else {
             playButton.setImage(UIImage(named: "play"), for: .normal)
             cellController.setDidStartGame(to: false)
@@ -149,6 +145,11 @@ class GridViewController: UIViewController {
     
     // MARK: - Update Views
     private func updateViews() {
+        
+        // Set up navigation bar
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.hidesBarsOnSwipe = true
+        
         // Pass the cellController to the Grid
         grid.cellController = cellController
         
