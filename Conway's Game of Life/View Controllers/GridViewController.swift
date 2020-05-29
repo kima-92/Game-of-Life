@@ -13,19 +13,24 @@ class GridViewController: UIViewController {
     
     // MARK: - Properties
     var cellController = CellController()
-    var timer = Timer()
+    var timer: Timer?
+    var waitTimer = Timer()
     
-    var cellSize: CGFloat = 40  //8
+    var defaultGameSpeed = 0.5
+    var gameSpeed: Double = 0.0   // will be set up in updateViews
+    var gameSpeedLimit: Double = 0.4
+    
+    var cellSize: CGFloat = 20  //8
     var shadowColor: UIColor = .black
     
     var runButtons: [UIButton?] {
         let buttons = [playButton,
-                       stopButton,
                        clearButton,
                        forwardByOneButton,
                        backwardByOneButton,
                        fastforwardButton,
-                       fastbackwardButton
+                       fastbackwardButton,
+                       createRandomPatternButton
         ]
         return buttons
     }
@@ -34,12 +39,11 @@ class GridViewController: UIViewController {
     @IBOutlet weak var grid: Grid!
     @IBOutlet weak var tapOnCellsLabel: UILabel!
     @IBOutlet weak var buttonsGreyView: UIView!
+    @IBOutlet weak var createRandomPatternButton: UIButton!
     
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var stopButton: UIButton!
-    @IBOutlet weak var pauseButton: UIButton!
-    
     @IBOutlet weak var clearButton: UIButton!
+    
     @IBOutlet weak var forwardByOneButton: UIButton!
     @IBOutlet weak var backwardByOneButton: UIButton!
     @IBOutlet weak var fastforwardButton: UIButton!
@@ -58,25 +62,12 @@ class GridViewController: UIViewController {
         grid.setNeedsDisplay()
     }
     
-    @IBAction func clearButtonTapped(_ sender: UIButton) {
+    @IBAction func createRandomPatternButtonTapped(_ sender: UIButton) {
         sender.pulsate()
         
-        cellController.setCellsToDead()
+        // Gettings a pattern of cells
+        cellController.setARandomPatternToLive()
         grid.setNeedsDisplay()
-    }
-    
-    @IBAction func fastforwardButtonTapped(_ sender: UIButton) {
-        sender.pulsate()
-        
-    }
-    @IBAction func fastbackwardButtonTapped(_ sender: UIButton) {
-        sender.pulsate()
-        
-    }
-    
-    @IBAction func backByOneButtonTapped(_ sender: UIButton) {
-        sender.pulsate()
-        
     }
     
     // User stated the timer
@@ -87,14 +78,39 @@ class GridViewController: UIViewController {
         if cellController.startedTimer == false {
             playButton.setImage(UIImage(named: "pause"), for: .normal)
             setUpTimer()
-        
-        //Pause
+            
+            //Pause
         } else {
             playButton.setImage(UIImage(named: "play"), for: .normal)
             cellController.setDidStartGame(to: false)
             
-            timer.invalidate()
+            if let timer = timer {
+                
+                timer.invalidate()
+            }
         }
+    }
+    
+    // Clear Grid
+    @IBAction func clearButtonTapped(_ sender: UIButton) {
+        sender.pulsate()
+        
+        // Change the Image of the play button
+        playButton.setImage(UIImage(named: "play"), for: .normal)
+        
+        // If the timer is running, stop it and set variable
+        if cellController.startedTimer == true {
+            
+            cellController.setDidStartGame(to: false)
+            
+            if let timer = timer {
+                timer.invalidate()
+            }
+        }
+        
+        // Re-Set Grid to blank
+        cellController.setCellsToDead()
+        grid.setNeedsDisplay()
     }
     
     // Re-draws the grid Once
@@ -105,22 +121,60 @@ class GridViewController: UIViewController {
         self.grid.setNeedsDisplay()
     }
     
-    // Stop the timer
-    @IBAction func stopButtonTapped(_ sender: UIButton) {
+    @IBAction func backByOneButtonTapped(_ sender: UIButton) {
         sender.pulsate()
         
-        cellController.setDidStartGame(to: false)
-        timer.invalidate()
-        cellController.setCellsToDead()
-        grid.setNeedsDisplay()
     }
     
+    @IBAction func fastforwardButtonTapped(_ sender: UIButton) {
+        sender.pulsate()
+        
+        if let timer = timer {
+            cancelTimer()
+            
+            //waitTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+                ////////                                                               .5                                       .4                                                                                          .5                                                      .4
+                if self.gameSpeed > self.defaultGameSpeed * self.gameSpeedLimit && self.gameSpeed < self.defaultGameSpeed / self.gameSpeedLimit {
+                    
+                    self.gameSpeed -= 0.1
+                }
+                self.setUpTimer()
+           // }
+            
+        }
+    }
+    
+    @IBAction func fastbackwardButtonTapped(_ sender: UIButton) {
+        sender.pulsate()
+        
+        if let timer = timer {
+//            timer.invalidate()
+            cancelTimer()
+            
+            if gameSpeed > defaultGameSpeed * gameSpeedLimit && gameSpeed < defaultGameSpeed / gameSpeedLimit {
+                
+                gameSpeed += 0.1
+            }
+            setUpTimer()
+        }
+    }
+    
+    
+    
+    
+    
     // MARK: - Methods
+    
+    private func cancelTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
     
     // Starts the timer to keep refreshing the Grid
     private func setUpTimer() {
         cellController.setDidStartGame(to: true)
-        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(refreshGrid), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: gameSpeed, target: self, selector: #selector(refreshGrid), userInfo: nil, repeats: true)
+        timer?.tolerance = 0.1
     }
     
     // Selector function that re-draws (refreshes) the grid
@@ -136,6 +190,7 @@ class GridViewController: UIViewController {
             guard let button = button else { return }
             
             button.imageView?.layer.cornerRadius = 15
+            button.layer.cornerRadius = 15
             button.layer.shadowColor = shadowColor.cgColor
             button.layer.shadowOffset = CGSize(width: 3.0, height: 4.0)
             button.layer.shadowOpacity = 0.4
@@ -163,8 +218,12 @@ class GridViewController: UIViewController {
         // Set up the buttons
         setupButtonsViews()
         
+        // Round corners
         tapOnCellsLabel.layer.cornerRadius = 15
         buttonsGreyView.layer.cornerRadius = 15
+        
+        // Set up Runtime speed
+        gameSpeed = defaultGameSpeed
     }
     
 
