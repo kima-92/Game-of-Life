@@ -55,47 +55,68 @@ class GridViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func clearButtonTapped(_ sender: UIButton) {
-        cellController.setCellsToDead()
-        grid.setNeedsDisplay()
-    }
-    @IBAction func pauseButtonTapped(_ sender: UIButton) {
-    }
-    @IBAction func fastforwardButtonTapped(_ sender: UIButton) {
-    }
-    @IBAction func fastbackwardButtonTapped(_ sender: UIButton) {
-    }
-    
-    @IBAction func backByOneButtonTapped(_ sender: UIButton) {
-    }
-    
-    
-    
     @IBAction func gridTapped(_ sender: Grid) {
         grid.setNeedsDisplay()
     }
     
-    // Set Initial Pattern
-    @IBAction func setPatternButtonTapped(_ sender: UIButton) {
-        // Testing the setInitialPattern function
-        cellController.setInitialPattern()
+    @IBAction func clearButtonTapped(_ sender: UIButton) {
+        sender.pulsate()
+        
+        cellController.setCellsToDead()
+        grid.setNeedsDisplay()
+    }
+    @IBAction func pauseButtonTapped(_ sender: UIButton) {
+        sender.pulsate()
+        
+        cellController.setDidStartGame(to: false)
+        timer.invalidate()
+    }
+    @IBAction func fastforwardButtonTapped(_ sender: UIButton) {
+        sender.pulsate()
+        
+    }
+    @IBAction func fastbackwardButtonTapped(_ sender: UIButton) {
+        sender.pulsate()
+        
+    }
+    
+    @IBAction func backByOneButtonTapped(_ sender: UIButton) {
+        sender.pulsate()
+        
     }
     
     // User stated the timer
     @IBAction func playButtonTapped(_ sender: UIButton) {
-        setUpTimer()
+        sender.pulsate()
+        
+        if cellController.startedTimer == false {
+            playButton.setImage(UIImage(named: "pause"), for: .normal)
+            setUpTimer()
+            
+        } else {
+            playButton.setImage(UIImage(named: "play"), for: .normal)
+            cellController.setDidStartGame(to: false)
+            
+            timer.invalidate()
+        }
     }
     
     // Re-draws the grid Once
     @IBAction func forwardByOneButtonTapped(_ sender: UIButton) {
+        sender.pulsate()
+        
         cellController.setShouldGameRunOnce(to: true)
         self.grid.setNeedsDisplay()
     }
     
     // Stop the timer
     @IBAction func stopButtonTapped(_ sender: UIButton) {
+        sender.pulsate()
+        
         cellController.setDidStartGame(to: false)
         timer.invalidate()
+        cellController.setCellsToDead()
+        grid.setNeedsDisplay()
     }
     
     // MARK: - Methods

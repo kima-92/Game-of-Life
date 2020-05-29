@@ -129,7 +129,7 @@
                                                                             <constraint firstAttribute="width" secondItem="FvP-z7-9dJ" secondAttribute="height" multiplier="1.5:1" id="5z8-36-u8U"/>
                                                                             <constraint firstAttribute="height" constant="70" id="cbD-6v-s7t"/>
                                                                         </constraints>
-                                                                        <state key="normal" title="Start Timer!" image="play"/>
+                                                                        <state key="normal" image="play"/>
                                                                         <connections>
                                                                             <action selector="playButtonTapped:" destination="kfs-5t-3kp" eventType="touchUpInside" id="uAo-w1-jiZ"/>
                                                                         </connections>
