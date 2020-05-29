@@ -19,9 +19,10 @@ class Grid: UIControl {
     var coordinates: Coordinates?
     
     var indexSum = 0
-    var defaultColor: UIColor = UIColor(displayP3Red: 130/255, green: 130/255, blue: 180/255, alpha: 0.4)
+    var defaultColor: UIColor = UIColor(displayP3Red: 200/255, green: 200/255, blue: 255/255, alpha: 0.4)
     var cellColor: UIColor = .white
     var liveCellColor: UIColor = .black
+    var liveCellColorAlpha: CGFloat = 0.1
     
     // Setup for the Grid before the screen loads
     override func layoutSubviews() {
@@ -119,7 +120,8 @@ class Grid: UIControl {
                     // If the next state for this cell is alive,
                     // Set color to black
                     if nextState == .live {
-                        cellColor = liveCellColor
+                        let lightColor = liveCellColor.withAlphaComponent(liveCellColorAlpha)
+                        cellColor = lightColor
                     }
                     
                     // Change this cell's state
@@ -127,7 +129,7 @@ class Grid: UIControl {
                     if cell.state != nextState {
                         cellController.changeStateForCellWith(id: cell.indexID)
                     }
-                    
+                     
                     // Color Cell
                     context.setFillColor(cellColor.cgColor)
                     context.fill(cellRect!)                    
@@ -163,7 +165,8 @@ class Grid: UIControl {
                     
                     // Set cellColor to liveColor if cell is alive
                     if nextState == .live {
-                        cellColor = liveCellColor
+                        let lightColor = liveCellColor.withAlphaComponent(liveCellColorAlpha)
+                        cellColor = lightColor
                     }
                     
                     // Change this cell's state
@@ -171,7 +174,7 @@ class Grid: UIControl {
                     if cell.state != nextState {
                         cellController.changeStateForCellWith(id: cell.indexID)
                     }
-                    
+                                        
                     // Color the cell
                     context.setFillColor(cellColor.cgColor)
                     context.fill(cellRect!)
@@ -203,9 +206,10 @@ class Grid: UIControl {
                     
                     // Set cellColor to liveColor if cell is alive
                     if cell.state == .live {
-                        cellColor = liveCellColor
+                        let lightColor = liveCellColor.withAlphaComponent(liveCellColorAlpha)
+                        cellColor = lightColor
                     }
-                    
+                                        
                     context.setFillColor(cellColor.cgColor)
                     context.fill(cellRect!)
                 }
@@ -295,7 +299,7 @@ class Grid: UIControl {
         super.endTracking(touch, with: event)
         
         guard let touch = touch,
-            let cellController = cellController else { return }
+            let _ = cellController else { return }
         
         let touchPoint = touch.location(in: self)
         
